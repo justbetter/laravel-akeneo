@@ -1,6 +1,6 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace JustBetter\Akeneo\Tests;
 
 class ExampleTest extends TestCase
 {
