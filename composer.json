@@ -45,8 +45,8 @@
         }
     },
     "scripts": {
-        "test": "./vendor/bin/testbench package:test --parallel --no-coverage",
-        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+        "test": "make test",
+        "coverage": "make coverage"
     },
     "config": {
         "sort-packages": true
