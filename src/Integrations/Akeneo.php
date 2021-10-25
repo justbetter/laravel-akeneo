@@ -2,13 +2,13 @@
 
 namespace JustBetter\Akeneo\Integrations;
 
-use Akeneo\Pim\ApiClient\AkeneoPimClientBuilder;
 use Akeneo\Pim\ApiClient\AkeneoPimClientInterface;
-use JustBetter\Akeneo\Concerns\BuildsClient;
+use Akeneo\Pim\ApiClient\Api\ProductModelApi;
+use BadMethodCallException;
 use JustBetter\Akeneo\Exceptions\AkeneoConfigurationException;
 
 /**
- * @method static \Akeneo\Pim\ApiClient\Api\ProductModelApi getProductModelApi()
+ * @method static ProductModelApi getProductModelApi()
  */
 class Akeneo
 {
@@ -30,7 +30,7 @@ class Akeneo
         }
 
         if (! method_exists($this->client, $name)) {
-            throw new \BadMethodCallException(
+            throw new BadMethodCallException(
                 message: __('Method ":method" does not exist on class ":class"', [
                     'method' => $name,
                     'class' => get_class($this->client)

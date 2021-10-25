@@ -6,7 +6,7 @@ use Illuminate\Support\LazyCollection;
 
 abstract class AllRequest
 {
-    public static function request(): static
+    public static function request(): self
     {
         return new static();
     }

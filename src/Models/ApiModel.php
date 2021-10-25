@@ -17,7 +17,7 @@ abstract class ApiModel
     public static function all(): LazyCollection
     {
         $calledClass = class_basename(
-            class: get_called_class()
+            get_called_class()
         );
 
         $class = "JustBetter\\Akeneo\\Requests\\{$calledClass}\\All";
