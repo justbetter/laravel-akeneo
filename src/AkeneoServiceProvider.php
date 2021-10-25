@@ -2,7 +2,6 @@
 
 namespace JustBetter\Akeneo;
 
-use JustBetter\Akeneo\Concerns\BuildsClient;
 use JustBetter\Akeneo\Integrations\Akeneo;
 use JustBetter\Akeneo\Integrations\ClientBuilder;
 use Spatie\LaravelPackageTools\Package;

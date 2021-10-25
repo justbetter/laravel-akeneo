@@ -8,6 +8,6 @@ return [
             'secret' => env('AKENEO_SECRET'),
             'username' => env('AKENEO_USERNAME'),
             'password' => env('AKENEO_PASSWORD'),
-        ]
-    ]
+        ],
+    ],
 ];

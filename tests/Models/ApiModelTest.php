@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\LazyCollection;
 use JustBetter\Akeneo\Tests\Fakes\Models\FakeModel;
 
 it('can construct a model', function () {

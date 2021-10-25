@@ -2,12 +2,10 @@
 
 namespace JustBetter\Akeneo\Tests\Fakes\Api;
 
-
 use Illuminate\Support\LazyCollection;
 
 class FakeProductModelApi
 {
-
     public function create(string $code, array $data = []): int
     {
         //
