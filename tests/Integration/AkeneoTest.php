@@ -40,7 +40,6 @@ it('can have multiple connections', function () {
     $connection = Akeneo::connection('instance2');
 
     $connection->assertUrl('https://instance2.akeneo.nl');
-
 });
 
 test('the connection must be defined', function () {
@@ -49,5 +48,4 @@ test('the connection must be defined', function () {
 
 it('throws exception when method does not exist on client', function () {
     Akeneo::fakeMethod();
-
 })->expectException(BadMethodCallException::class);
