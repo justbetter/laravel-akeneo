@@ -24,7 +24,7 @@ class FakeClientBuilder implements AkeneoPimClientInterface
 {
     public string $url;
 
-    public static function build(string $url): self
+    public static function create(string $url): self
     {
         $instance = new self;
         $instance->url = $url;

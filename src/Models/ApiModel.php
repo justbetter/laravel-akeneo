@@ -2,6 +2,7 @@
 
 namespace JustBetter\Akeneo\Models;
 
+use ErrorException;
 use Illuminate\Support\LazyCollection;
 
 abstract class ApiModel
@@ -20,6 +21,12 @@ abstract class ApiModel
         );
 
         $class = "JustBetter\\Akeneo\\Requests\\{$calledClass}\\All";
+
+        if (! class_exists($class)) {
+            throw new ErrorException(
+                __('Class ":class" not found', ['class' => $class])
+            );
+        }
 
         return $class::request()->send();
     }

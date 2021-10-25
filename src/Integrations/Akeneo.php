@@ -30,8 +30,12 @@ class Akeneo
         }
 
         if (! method_exists($this->client, $name)) {
-            $class = get_class($this->client);
-            throw new \BadMethodCallException("Method '$name' does not exist on class '$class'");
+            throw new \BadMethodCallException(
+                message: __('Method ":method" does not exist on class ":class"', [
+                    'method' => $name,
+                    'class' => get_class($this->client)
+                ])
+            );
         }
 
         return call_user_func_array([$this->client, $name], $arguments);
@@ -42,7 +46,9 @@ class Akeneo
         $config = config("akeneo.connections.{$this->connection}");
 
         if (! $config) {
-            throw new AkeneoConfigurationException("The connection '{$this->connection}' does not exist");
+            throw new AkeneoConfigurationException(
+                message: __('The connection ":connection" does not exist', ['connection' => $this->connection])
+            );
         }
 
         $errors = validator($config, [
@@ -53,14 +59,15 @@ class Akeneo
             'password'  => 'required',
         ])->errors();
 
+        if ($errors->any()) {
+            throw new AkeneoConfigurationException(
+                __('The Akeneo connection is not configured correctly for connection ":connection"', [
+                    'connection' => $this->connection
+                ])
+            );
+        }
 
-        throw_if(
-            $errors->any(),
-            AkeneoConfigurationException::class,
-            "The Akeneo connection is not configured correctly for connection '{$this->connection}'"
-        );
-
-        $this->client = app('clientBuilder')::build($config['url'])
+        $this->client = app('clientBuilder')::create($config['url'])
             ->buildAuthenticatedByPassword(
                 $config['client_id'],
                 $config['secret'],
