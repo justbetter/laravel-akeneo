@@ -1,4 +1,4 @@
-name: coverage
+name: code-quality
 
 on:
   push:
@@ -43,5 +43,8 @@ jobs:
           composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
-      - name: Check coverage
+      - name: Run coverage
         run: make coverage
+
+      - name: Run larastan
+        run: make analyse

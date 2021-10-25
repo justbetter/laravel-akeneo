@@ -1,10 +1,10 @@
 analyse:
-	./vendor/bin/phpstan analyse
+	php vendor/bin/phpstan analyse
 
 coverage:
-	XDEBUG_MODE=coverage ./vendor/bin/pest --coverage --min=70
+	XDEBUG_MODE=coverage php vendor/bin/pest --coverage --min=95
 
 test:
-	./vendor/bin/pest
+	php vendor/bin/pest
 
 all: analyse coverage
