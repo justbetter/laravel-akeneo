@@ -25,7 +25,7 @@ it('must have valid url', function ($url) {
 })->with([
     '',
     'akeneo.com',
-    'https://akeneo'
+    'https://akeneo',
 ])->expectException(AkeneoConfigurationException::class);
 
 it('can have multiple connections', function () {

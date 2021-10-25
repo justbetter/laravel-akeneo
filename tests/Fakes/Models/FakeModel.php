@@ -6,5 +6,4 @@ use JustBetter\Akeneo\Models\ApiModel;
 
 class FakeModel extends ApiModel
 {
-
 }

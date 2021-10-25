@@ -3,8 +3,8 @@
 use Illuminate\Support\LazyCollection;
 use JustBetter\Akeneo\Facades\Akeneo;
 use JustBetter\Akeneo\Models\ProductModel;
-use JustBetter\Akeneo\Tests\Fakes\FakeClientBuilder;
 use JustBetter\Akeneo\Tests\Fakes\Api\FakeProductModelApi;
+use JustBetter\Akeneo\Tests\Fakes\FakeClientBuilder;
 
 beforeEach(function () {
     config()->set('akeneo.connections.default', [
