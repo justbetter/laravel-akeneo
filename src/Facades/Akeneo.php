@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \JustBetter\Akeneo\Integrations\Akeneo
+ * @mixin \JustBetter\Akeneo\Integrations\Akeneo
  */
 class Akeneo extends Facade
 {

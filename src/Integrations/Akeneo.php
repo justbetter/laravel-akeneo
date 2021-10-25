@@ -4,8 +4,12 @@ namespace JustBetter\Akeneo\Integrations;
 
 use Akeneo\Pim\ApiClient\AkeneoPimClientBuilder;
 use Akeneo\Pim\ApiClient\AkeneoPimClientInterface;
+use JustBetter\Akeneo\Concerns\BuildsClient;
 use JustBetter\Akeneo\Exceptions\AkeneoConfigurationException;
 
+/**
+ * @method static \Akeneo\Pim\ApiClient\Api\ProductModelApi getProductModelApi()
+ */
 class Akeneo
 {
     protected ?AkeneoPimClientInterface $client = null;
@@ -35,10 +39,10 @@ class Akeneo
 
     protected function buildClient(): void
     {
-        $config = config("akeneo.connections.$this->connection");
+        $config = config("akeneo.connections.{$this->connection}");
 
         if (! $config) {
-            throw new AkeneoConfigurationException("The connection '$this->connection' does not exist");
+            throw new AkeneoConfigurationException("The connection '{$this->connection}' does not exist");
         }
 
         $errors = validator($config, [
@@ -53,16 +57,15 @@ class Akeneo
         throw_if(
             $errors->any(),
             AkeneoConfigurationException::class,
-            "The Akeneo connection is not configured correctly for connection '$this->connection'"
+            "The Akeneo connection is not configured correctly for connection '{$this->connection}'"
         );
 
-        $this->client = (new AkeneoPimClientBuilder($config['url']))
+        $this->client = app('clientBuilder')::build($config['url'])
             ->buildAuthenticatedByPassword(
                 $config['client_id'],
                 $config['secret'],
                 $config['username'],
                 $config['password']
             );
-
     }
 }
