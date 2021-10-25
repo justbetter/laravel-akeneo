@@ -31,9 +31,9 @@ class Akeneo
 
         if (! method_exists($this->client, $name)) {
             throw new BadMethodCallException(
-                message: __('Method ":method" does not exist on class ":class"', [
+                __('Method ":method" does not exist on class ":class"', [
                     'method' => $name,
-                    'class' => get_class($this->client)
+                    'class'  => get_class($this->client),
                 ])
             );
         }
@@ -47,7 +47,7 @@ class Akeneo
 
         if (! $config) {
             throw new AkeneoConfigurationException(
-                message: __('The connection ":connection" does not exist', ['connection' => $this->connection])
+                __('The connection ":connection" does not exist', ['connection' => $this->connection])
             );
         }
 
@@ -62,7 +62,7 @@ class Akeneo
         if ($errors->any()) {
             throw new AkeneoConfigurationException(
                 __('The Akeneo connection is not configured correctly for connection ":connection"', [
-                    'connection' => $this->connection
+                    'connection' => $this->connection,
                 ])
             );
         }
