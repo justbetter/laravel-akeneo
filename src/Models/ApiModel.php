@@ -2,10 +2,11 @@
 
 namespace JustBetter\Akeneo\Models;
 
+use ArrayAccess;
 use ErrorException;
 use Illuminate\Support\LazyCollection;
 
-abstract class ApiModel
+abstract class ApiModel implements ArrayAccess
 {
     protected $attributes = [];
 
@@ -33,6 +34,26 @@ abstract class ApiModel
 
     public function __get(string $name): mixed
     {
-        return $this->attributes[$name];
+        return $this->attributes[$name] ?? null;
+    }
+
+    public function offsetGet($offset): mixed
+    {
+        return $this->attributes[$offset] ?? null;
+    }
+
+    public function offsetSet($offset, $value): void
+    {
+        $this->attributes[$offset] = $value;
+    }
+
+    public function offsetExists($offset): bool
+    {
+        return isset($this->attributes[$offset]);
+    }
+
+    public function offsetUnset($offset): void
+    {
+        unset($this->attributes[$offset]);
     }
 }
