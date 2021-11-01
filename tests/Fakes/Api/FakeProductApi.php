@@ -20,7 +20,6 @@ class FakeProductApi
     {
         if ($code !== 'test') {
             throw new NotFoundHttpException('test', new Request('GET', '/'), new Response());
-
         }
 
         return [
@@ -32,9 +31,9 @@ class FakeProductApi
                         'scope' => 'akeneo',
                         'locale' => 'nl_NL',
                         'data' => 'test product',
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ];
     }
 
@@ -54,6 +53,7 @@ class FakeProductApi
     {
         $this->upsert['code'] = $code;
         $this->upsert['data'] = $data;
+
         return true;
     }
 

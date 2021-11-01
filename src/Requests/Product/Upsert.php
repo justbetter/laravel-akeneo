@@ -2,10 +2,7 @@
 
 namespace JustBetter\Akeneo\Requests\Product;
 
-use Akeneo\Pim\ApiClient\Exception\NotFoundHttpException;
 use JustBetter\Akeneo\Facades\Akeneo;
-use JustBetter\Akeneo\Models\ProductModel;
-use JustBetter\Akeneo\Requests\FindRequest;
 use JustBetter\Akeneo\Requests\UpsertRequest;
 
 class Upsert extends UpsertRequest
