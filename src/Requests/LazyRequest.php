@@ -2,15 +2,14 @@
 
 namespace JustBetter\Akeneo\Requests;
 
+use Illuminate\Support\LazyCollection;
 
-use Illuminate\Support\Collection;
-
-abstract class AllRequest
+abstract class LazyRequest
 {
     public static function request(): self
     {
         return new static();
     }
 
-    abstract public function send(): Collection;
+    abstract public function send(): LazyCollection;
 }

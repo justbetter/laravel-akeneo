@@ -2,21 +2,26 @@
 
 namespace JustBetter\Akeneo\Requests\ProductModel;
 
-use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Collection;
 use JustBetter\Akeneo\Facades\Akeneo;
-use JustBetter\Akeneo\Models\ProductModel;
 use JustBetter\Akeneo\Requests\AllRequest;
 
 class All extends AllRequest
 {
-    public function send(): LazyCollection
+    public function send(): Collection
     {
-        return LazyCollection::make(function () {
+        return cache()->remember('akeneo_product_model_all', config('akeneo.cache_ttl', 0), function () {
+            $models = [];
+
             $productModels = Akeneo::getProductModelApi()->all(50);
 
+            $model = config('akeneo.models.product_model');
+
             foreach ($productModels as $productModel) {
-                yield new ProductModel($productModel);
+                $models[] = new $model($productModel);
             }
+
+            return $model::newCollection($models);
         });
     }
 }

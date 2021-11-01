@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'models' => [
+        'product_model' => \JustBetter\Akeneo\Models\ProductModel::class,
+        'product' => \JustBetter\Akeneo\Models\Product::class,
+    ],
+
     'connections' => [
         'default' => [
             'url' => env('AKENEO_URL'),
@@ -10,4 +15,6 @@ return [
             'password' => env('AKENEO_PASSWORD'),
         ],
     ],
+
+    'cache_ttl' => 30,
 ];

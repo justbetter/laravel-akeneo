@@ -17,6 +17,8 @@ class Find extends FindRequest
             return null;
         }
 
-        return new Product($product);
+        $model = config('akeneo.models.product');
+
+        return new $model($product);
     }
 }

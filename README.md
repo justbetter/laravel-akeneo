@@ -29,6 +29,11 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'models' => [
+        'product_model' => \JustBetter\Akeneo\Models\ProductModel::class,
+        'product' => \JustBetter\Akeneo\Models\Product::class,
+    ],
+    
     'connections' => [
         'default' => [
             'url' => env('AKENEO_URL'),
@@ -38,32 +43,44 @@ return [
             'password' => env('AKENEO_PASSWORD'),
         ],
     ],
+    
+    'cache_ttl' => 30,
 ];
 ```
 
 ## Usage
 
 supported features:
+* Multiple Akeneo connections (WIP)
+* Custom model classes
 * Product Models
   * Get all
+  * Get all lazily
   * Find by code
   * Save
 * Products
   * Get all
+  * Get all lazily
   * Find by code
   * Save
-* Multiple Akeneo connections (WIP)
 
 ### How to use
 
 #### All
-Getting all of the resources from Akeneo returns a `LazyCollection`
+Get all of the resources from Akeneo
 ```php
 $models = ProductModel::all();
 ```
-To get all resources in a collection
+
+This will return a `Collection` by default but can be modified
+by overwriting the `newCollection` method on your custom model.
+
+The `all()` method can also be cached by setting the TTL in the config
+
+#### Lazy
+Getting all of the resources lazily from Akeneo returns a `LazyCollection`
 ```php
-$collection = ProductModel::all()->collect();
+$models = ProductModel::lazy();
 ```
 See the laravel docs on [lazy collections](https://laravel.com/docs/8.x/collections#lazy-collections) for a full list of methods
 

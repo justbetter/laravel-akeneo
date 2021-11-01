@@ -10,7 +10,7 @@ it('can construct a model', function () {
 });
 
 it('throws exception when the request classes cannot be found', function () {
-    FakeModel::all();
+    FakeModel::lazy();
 })->expectException(ErrorException::class);
 
 it('can be accessed like an array', function () {

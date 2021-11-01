@@ -5,6 +5,7 @@ namespace JustBetter\Akeneo\Models;
 use ArrayAccess;
 use ErrorException;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Collection;
 use Illuminate\Support\LazyCollection;
 use JustBetter\Akeneo\Exceptions\ModelNotFoundException;
 use JustBetter\Akeneo\Models\Concerns\HasAttributes;
@@ -16,6 +17,11 @@ abstract class ApiModel implements ArrayAccess, Arrayable
     public function __construct(array $attributes = [])
     {
         $this->attributes = $attributes;
+    }
+
+    public static function newCollection(array $models = []): Collection
+    {
+        return new Collection($models);
     }
 
     protected static function guessApiNamespace(string $type): string
@@ -35,9 +41,16 @@ abstract class ApiModel implements ArrayAccess, Arrayable
         return $class;
     }
 
-    public static function all(): LazyCollection
+    public static function all(): Collection
     {
         $class = self::guessApiNamespace('All');
+
+        return $class::request()->send();
+    }
+
+    public static function lazy(): LazyCollection
+    {
+        $class = self::guessApiNamespace('Lazy');
 
         return $class::request()->send();
     }

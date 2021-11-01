@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\LazyCollection;
 use JustBetter\Akeneo\Facades\Akeneo;
 use JustBetter\Akeneo\Models\ProductModel;
@@ -18,6 +19,18 @@ beforeEach(function () {
     app()->bind('clientBuilder', FakeClientBuilder::class);
 });
 
+it('can fetch all product models lazily from Akeneo and formats it correctly', function () {
+    Akeneo::spy()
+        ->expects('getProductModelApi')
+        ->andReturn(new FakeProductModelApi());
+
+    $models = ProductModel::lazy();
+
+    expect($models)
+        ->toBeInstanceOf(LazyCollection::class)
+        ->each->toBeInstanceOf(ProductModel::class);
+});
+
 it('can fetch all product models from Akeneo and formats it correctly', function () {
     Akeneo::spy()
         ->expects('getProductModelApi')
@@ -26,7 +39,7 @@ it('can fetch all product models from Akeneo and formats it correctly', function
     $models = ProductModel::all();
 
     expect($models)
-        ->toBeInstanceOf(LazyCollection::class)
+        ->toBeInstanceOf(Collection::class)
         ->each->toBeInstanceOf(ProductModel::class);
 });
 
