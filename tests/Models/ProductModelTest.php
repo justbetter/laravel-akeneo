@@ -52,7 +52,7 @@ it('throws an error when a model is not found with findOrFail', function () {
     ProductModel::findOrFail('testing');
 })->expectException(\JustBetter\Akeneo\Exceptions\ModelNotFoundException::class);
 
-it('can change values', function () {
+it('can change a product model\'s values', function () {
     // TODO: Subject to change!
 
     $model = new ProductModel([

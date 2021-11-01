@@ -4,7 +4,7 @@ namespace JustBetter\Akeneo\Models;
 
 use JustBetter\Akeneo\Models\Concerns\HasValues;
 
-class ProductModel extends ApiModel
+class Product extends ApiModel
 {
     use HasValues;
 }
