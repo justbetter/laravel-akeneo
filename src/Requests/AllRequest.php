@@ -2,7 +2,6 @@
 
 namespace JustBetter\Akeneo\Requests;
 
-
 use Illuminate\Support\Collection;
 
 abstract class AllRequest
