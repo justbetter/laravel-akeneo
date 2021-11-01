@@ -4,24 +4,27 @@ namespace JustBetter\Akeneo\Models;
 
 use ArrayAccess;
 use ErrorException;
+use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\LazyCollection;
+use JustBetter\Akeneo\Exceptions\ModelNotFoundException;
+use JustBetter\Akeneo\Models\Concerns\HasAttributes;
 
-abstract class ApiModel implements ArrayAccess
+abstract class ApiModel implements ArrayAccess, Arrayable
 {
-    protected $attributes = [];
+    use HasAttributes;
 
     public function __construct(array $attributes = [])
     {
         $this->attributes = $attributes;
     }
 
-    public static function all(): LazyCollection
+    protected static function guessApiNamespace(string $type): string
     {
-        $calledClass = class_basename(
+        $modelName = class_basename(
             get_called_class()
         );
 
-        $class = "JustBetter\\Akeneo\\Requests\\{$calledClass}\\All";
+        $class = "JustBetter\\Akeneo\\Requests\\{$modelName}\\{$type}";
 
         if (! class_exists($class)) {
             throw new ErrorException(
@@ -29,31 +32,44 @@ abstract class ApiModel implements ArrayAccess
             );
         }
 
+        return $class;
+    }
+
+    public static function all(): LazyCollection
+    {
+        $class = self::guessApiNamespace('All');
+
         return $class::request()->send();
     }
 
-    public function __get(string $name): mixed
+    public static function find(string $code): ?static
     {
-        return $this->attributes[$name] ?? null;
+        $class = self::guessApiNamespace('Find');
+
+        return $class::request($code)->send();
     }
 
-    public function offsetGet($offset): mixed
+    public static function findOrFail(string $code): static
     {
-        return $this->attributes[$offset] ?? null;
+        $model = self::find($code);
+
+        if (! $model) {
+            throw new ModelNotFoundException(
+                __('No results for code ":code"', ['code' => $code])
+            );
+        }
+
+        return $model;
     }
 
-    public function offsetSet($offset, $value): void
+    public function save(): bool
     {
-        $this->attributes[$offset] = $value;
-    }
+        $class = self::guessApiNamespace('Upsert');
 
-    public function offsetExists($offset): bool
-    {
-        return isset($this->attributes[$offset]);
-    }
+        $data = $this->toArray();
 
-    public function offsetUnset($offset): void
-    {
-        unset($this->attributes[$offset]);
+        unset($data['code']);
+
+        return $class::request($this['code'])->send($data);
     }
 }
