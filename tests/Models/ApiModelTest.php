@@ -37,7 +37,6 @@ it('can be accessed like an array', function () {
 it('can be transformed into an array', function () {
     $model = new FakeModel(['id' => 5, 'name' => 'test']);
 
-    expect((array)$model)->toBeArray();
+    expect((array) $model)->toBeArray();
     expect($model->toArray())->toBeArray();
-
 });
