@@ -5,15 +5,12 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/justbetter/laravel-akeneo/Check%20&%20fix%20styling?label=code%20style)](https://github.com/justbetter/laravel-akeneo/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/justbetter/laravel-akeneo.svg?style=flat-square)](https://packagist.org/packages/justbetter/laravel-akeneo)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This package allows you to work with Akeneo in a more Laravel like way.
 
-## Support us
+## Requirements
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-akeneo.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-akeneo)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+* PHP 8 or above
+* Akeneo installation
 
 ## Installation
 
@@ -21,13 +18,6 @@ You can install the package via composer:
 
 ```bash
 composer require justbetter/laravel-akeneo
-```
-
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --provider="JustBetter\Akeneo\AkeneoServiceProvider" --tag="laravel-akeneo-migrations"
-php artisan migrate
 ```
 
 You can publish the config file with:
@@ -39,20 +29,83 @@ This is the contents of the published config file:
 
 ```php
 return [
+    'connections' => [
+        'default' => [
+            'url' => env('AKENEO_URL'),
+            'client_id' => env('AKENEO_CLIENT_ID'),
+            'secret' => env('AKENEO_SECRET'),
+            'username' => env('AKENEO_USERNAME'),
+            'password' => env('AKENEO_PASSWORD'),
+        ],
+    ],
 ];
 ```
 
 ## Usage
 
+supported features:
+* Product Models
+  * Get all
+  * Find by code
+  * Save
+* Products
+  * Get all
+  * Find by code
+  * Save
+* Multiple Akeneo connections (WIP)
+
+### How to use
+
+#### All
+Getting all of the resources from Akeneo returns a `LazyCollection`
 ```php
-$laravel-akeneo = new JustBetter\Akeneo();
-echo $laravel-akeneo->echoPhrase('Hello, Spatie!');
+$models = ProductModel::all();
+```
+To get all resources in a collection
+```php
+$collection = ProductModel::all()->collect();
+```
+See the laravel docs on [lazy collections](https://laravel.com/docs/8.x/collections#lazy-collections) for a full list of methods
+
+
+#### Find
+Find a resource by its code
+```php
+$product = Product::find('code-123');
+```
+
+#### Find
+Save an altered model and persist it to akeneo
+
+There is also a method `setValue()` to change attributes. 
+`NOTE: It's subject to change and in the near future each value 
+(attribute) will become it's own class by the attributes type`
+```php
+$product = Product::find('code-123');
+
+$product->setValue('product_name', 'test product 3');
+
+$product->save();
 ```
 
 ## Testing
 
+The workflow requires `99%` of the package to be tested.
+
 ```bash
-composer test
+make test
+# -- OR --
+make coverage
+```
+
+Make sure to also run static analysis checks
+```bash
+make analysis
+```
+
+Or combine the 2 requirements
+```bash
+make all
 ```
 
 ## Changelog
