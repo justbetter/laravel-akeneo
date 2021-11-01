@@ -48,7 +48,6 @@ it('throws an error when a model is not found with findOrFail', function () {
         ->expects('getProductModelApi')
         ->andReturn(new FakeProductModelApi());
 
-
     ProductModel::findOrFail('testing');
 })->expectException(\JustBetter\Akeneo\Exceptions\ModelNotFoundException::class);
 
@@ -63,16 +62,15 @@ it('can change values', function () {
                     'scope' => 'akeneo',
                     'locale' => 'nl_NL',
                     'data' => 'test model',
-                ]
-            ]
-        ]
+                ],
+            ],
+        ],
     ]);
 
     $model->setValue('product_name', 'test model 2');
 
     expect($model->values['product_name'][0]['data'])->toBe('test model 2');
 });
-
 
 it('can save a product model', function () {
     $fakeProductModelApi = new FakeProductModelApi();
