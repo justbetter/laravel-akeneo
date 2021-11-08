@@ -12,7 +12,6 @@ abstract class AkeneoEvent
 
     public function __construct(
         public array $event
-    )
-    {
+    ) {
     }
 }
