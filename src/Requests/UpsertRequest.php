@@ -4,11 +4,9 @@ namespace JustBetter\Akeneo\Requests;
 
 abstract class UpsertRequest
 {
-    protected string $code;
-
-    public function __construct(string $code)
-    {
-        $this->code = $code;
+    public function __construct(
+        protected string $code
+    ) {
     }
 
     public static function request(string $code): self

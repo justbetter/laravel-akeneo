@@ -2,7 +2,7 @@
 
 namespace JustBetter\Akeneo\Requests;
 
-abstract class FindRequest
+abstract class DeleteRequest
 {
     public function __construct(
         protected string $code
@@ -14,5 +14,5 @@ abstract class FindRequest
         return new static($code);
     }
 
-    abstract public function send();
+    abstract public function send(): bool;
 }

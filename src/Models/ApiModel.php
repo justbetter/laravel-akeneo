@@ -10,6 +10,10 @@ use Illuminate\Support\LazyCollection;
 use JustBetter\Akeneo\Exceptions\ModelNotFoundException;
 use JustBetter\Akeneo\Models\Concerns\HasAttributes;
 
+/**
+ * @mixin Product
+ * @mixin ProductModel
+ */
 abstract class ApiModel implements ArrayAccess, Arrayable
 {
     use HasAttributes;
@@ -81,8 +85,15 @@ abstract class ApiModel implements ArrayAccess, Arrayable
 
         $data = $this->toArray();
 
-        unset($data['code']);
+        unset($data[$this->primaryKey]);
 
-        return $class::request($this['code'])->send($data);
+        return $class::request($this[$this->primaryKey])->send($data);
+    }
+
+    public function delete(): bool
+    {
+        $class = self::guessApiNamespace('Delete');
+
+        return $class::request($this[$this->primaryKey])->send();
     }
 }

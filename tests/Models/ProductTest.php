@@ -68,13 +68,13 @@ it('can change a product\'s values', function () {
     // TODO: Subject to change!
 
     $product = new Product([
-        'code' => 'test',
+        'identifier'   => 'test',
         'values' => [
             'product_name' => [
                 [
-                    'scope' => 'akeneo',
+                    'scope'  => 'akeneo',
                     'locale' => 'nl_NL',
-                    'data' => 'test model',
+                    'data'   => 'test model',
                 ],
             ],
         ],
@@ -87,6 +87,7 @@ it('can change a product\'s values', function () {
 
 it('can save a product', function () {
     $fakeProductApi = new FakeProductApi();
+
     Akeneo::spy()
         ->expects('getProductApi')
         ->times(2)
@@ -102,4 +103,19 @@ it('can save a product', function () {
         ->code->toBe('test');
 
     expect($fakeProductApi->upsert['data']['values']['product_name'][0]['data'])->toBe('test product 2');
+});
+
+it('can delete a product', function () {
+    $fakeProductApi = new FakeProductApi();
+
+    Akeneo::spy()
+        ->expects('getProductApi')
+        ->times(2)
+        ->andReturn($fakeProductApi);
+
+    $model = Product::find('test');
+    $model->delete();
+
+    expect($fakeProductApi->delete)->toBe('test');
+
 });
