@@ -9,120 +9,120 @@ use JustBetter\Akeneo\Events\ProductUpdated;
 
 dataset('akeneo_events', [
     [ProductCreated::class, [
-        "events" => [
+        'events' => [
             [
-                "action"         => "product.created",
-                "event_id"       => "c306e088-fb76-479c-bbc0-18fef19da75d",
-                "event_datetime" => "2020-10-20T09:13:59+00:00",
-                "author"         => "peter",
-                "author_type"    => "ui",
-                "pim_source"     => "https://demo.akeneo.com",
-                "data"           => [
-                    "resource" => [
-                        "identifier"              => "1111111304",
-                        "family"                  => "accessories",
-                        "parent"                  => null,
-                        "groups"                  => [
+                'action'         => 'product.created',
+                'event_id'       => 'c306e088-fb76-479c-bbc0-18fef19da75d',
+                'event_datetime' => '2020-10-20T09:13:59+00:00',
+                'author'         => 'peter',
+                'author_type'    => 'ui',
+                'pim_source'     => 'https://demo.akeneo.com',
+                'data'           => [
+                    'resource' => [
+                        'identifier'              => '1111111304',
+                        'family'                  => 'accessories',
+                        'parent'                  => null,
+                        'groups'                  => [
                         ],
-                        "categories"              => [
-                            "master_accessories_sunglasses",
-                            "supplier_zaro",
+                        'categories'              => [
+                            'master_accessories_sunglasses',
+                            'supplier_zaro',
                         ],
-                        "enabled"                 => true,
-                        "values"                  => [
-                            "collection"  => [
+                        'enabled'                 => true,
+                        'values'                  => [
+                            'collection'  => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "winter_2020",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'winter_2020',
                                     ],
                                 ],
                             ],
-                            "image"       => [
+                            'image'       => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg",
-                                    "_links" => [
-                                        "download" => [
-                                            "href" => "http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg',
+                                    '_links' => [
+                                        'download' => [
+                                            'href' => 'http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download',
                                         ],
                                     ],
                                 ],
                             ],
-                            "ean"         => [
+                            'ean'         => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "1234567890316",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '1234567890316',
                                 ],
                             ],
-                            "name"        => [
+                            'name'        => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "Sunglasses",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => 'Sunglasses',
                                 ],
                             ],
-                            "weight"      => [
+                            'weight'      => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "amount" => "800.0000",
-                                        "unit"   => "GRAM",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'amount' => '800.0000',
+                                        'unit'   => 'GRAM',
                                     ],
                                 ],
                             ],
-                            "description" => [
+                            'description' => [
                                 [
-                                    "locale" => "en_US",
-                                    "scope"  => "ecommerce",
-                                    "data"   => "<p>Brown and gold sunglasses</p>",
+                                    'locale' => 'en_US',
+                                    'scope'  => 'ecommerce',
+                                    'data'   => '<p>Brown and gold sunglasses</p>',
                                 ],
                             ],
                         ],
-                        "created"                 => "2020-10-20T08:30:28+00:00",
-                        "updated"                 => "2020-10-20T09:13:59+00:00",
-                        "associations"            => [
-                            "PACK"         => [
-                                "groups"         => [
+                        'created'                 => '2020-10-20T08:30:28+00:00',
+                        'updated'                 => '2020-10-20T09:13:59+00:00',
+                        'associations'            => [
+                            'PACK'         => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
-                                ],
-                            ],
-                            "SUBSTITUTION" => [
-                                "groups"         => [
-                                ],
-                                "products"       => [
-                                ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "UPSELL"       => [
-                                "groups"         => [
+                            'SUBSTITUTION' => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "X_SELL"       => [
-                                "groups"         => [
+                            'UPSELL'       => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
+                                ],
+                            ],
+                            'X_SELL'       => [
+                                'groups'         => [
+                                ],
+                                'products'       => [
+                                ],
+                                'product_models' => [
                                 ],
                             ],
                         ],
-                        "quantified_associations" => [
+                        'quantified_associations' => [
                         ],
-                        "metadata"                => [
-                            "workflow_status" => "working_copy",
+                        'metadata'                => [
+                            'workflow_status' => 'working_copy',
                         ],
                     ],
                 ],
@@ -130,120 +130,120 @@ dataset('akeneo_events', [
         ],
     ]],
     [ProductUpdated::class, [
-        "events" => [
+        'events' => [
             [
-                "action"         => "product.updated",
-                "event_id"       => "c306e088-fb76-479c-bbc0-18fef19da75d",
-                "event_datetime" => "2020-10-20T09:13:59+00:00",
-                "author"         => "peter",
-                "author_type"    => "ui",
-                "pim_source"     => "https://demo.akeneo.com",
-                "data"           => [
-                    "resource" => [
-                        "identifier"              => "1111111304",
-                        "family"                  => "accessories",
-                        "parent"                  => null,
-                        "groups"                  => [
+                'action'         => 'product.updated',
+                'event_id'       => 'c306e088-fb76-479c-bbc0-18fef19da75d',
+                'event_datetime' => '2020-10-20T09:13:59+00:00',
+                'author'         => 'peter',
+                'author_type'    => 'ui',
+                'pim_source'     => 'https://demo.akeneo.com',
+                'data'           => [
+                    'resource' => [
+                        'identifier'              => '1111111304',
+                        'family'                  => 'accessories',
+                        'parent'                  => null,
+                        'groups'                  => [
                         ],
-                        "categories"              => [
-                            "master_accessories_sunglasses",
-                            "supplier_zaro",
+                        'categories'              => [
+                            'master_accessories_sunglasses',
+                            'supplier_zaro',
                         ],
-                        "enabled"                 => true,
-                        "values"                  => [
-                            "collection"  => [
+                        'enabled'                 => true,
+                        'values'                  => [
+                            'collection'  => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "winter_2020",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'winter_2020',
                                     ],
                                 ],
                             ],
-                            "image"       => [
+                            'image'       => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg",
-                                    "_links" => [
-                                        "download" => [
-                                            "href" => "http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg',
+                                    '_links' => [
+                                        'download' => [
+                                            'href' => 'http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download',
                                         ],
                                     ],
                                 ],
                             ],
-                            "ean"         => [
+                            'ean'         => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "1234567890316",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '1234567890316',
                                 ],
                             ],
-                            "name"        => [
+                            'name'        => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "Sunglasses",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => 'Sunglasses',
                                 ],
                             ],
-                            "weight"      => [
+                            'weight'      => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "amount" => "800.0000",
-                                        "unit"   => "GRAM",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'amount' => '800.0000',
+                                        'unit'   => 'GRAM',
                                     ],
                                 ],
                             ],
-                            "description" => [
+                            'description' => [
                                 [
-                                    "locale" => "en_US",
-                                    "scope"  => "ecommerce",
-                                    "data"   => "<p>Brown and gold sunglasses</p>",
+                                    'locale' => 'en_US',
+                                    'scope'  => 'ecommerce',
+                                    'data'   => '<p>Brown and gold sunglasses</p>',
                                 ],
                             ],
                         ],
-                        "created"                 => "2020-10-20T08:30:28+00:00",
-                        "updated"                 => "2020-10-20T09:13:59+00:00",
-                        "associations"            => [
-                            "PACK"         => [
-                                "groups"         => [
+                        'created'                 => '2020-10-20T08:30:28+00:00',
+                        'updated'                 => '2020-10-20T09:13:59+00:00',
+                        'associations'            => [
+                            'PACK'         => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
-                                ],
-                            ],
-                            "SUBSTITUTION" => [
-                                "groups"         => [
-                                ],
-                                "products"       => [
-                                ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "UPSELL"       => [
-                                "groups"         => [
+                            'SUBSTITUTION' => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "X_SELL"       => [
-                                "groups"         => [
+                            'UPSELL'       => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
+                                ],
+                            ],
+                            'X_SELL'       => [
+                                'groups'         => [
+                                ],
+                                'products'       => [
+                                ],
+                                'product_models' => [
                                 ],
                             ],
                         ],
-                        "quantified_associations" => [
+                        'quantified_associations' => [
                         ],
-                        "metadata"                => [
-                            "workflow_status" => "working_copy",
+                        'metadata'                => [
+                            'workflow_status' => 'working_copy',
                         ],
                     ],
                 ],
@@ -251,120 +251,120 @@ dataset('akeneo_events', [
         ],
     ]],
     [ProductRemoved::class, [
-        "events" => [
+        'events' => [
             [
-                "action"         => "product.removed",
-                "event_id"       => "c306e088-fb76-479c-bbc0-18fef19da75d",
-                "event_datetime" => "2020-10-20T09:13:59+00:00",
-                "author"         => "peter",
-                "author_type"    => "ui",
-                "pim_source"     => "https://demo.akeneo.com",
-                "data"           => [
-                    "resource" => [
-                        "identifier"              => "1111111304",
-                        "family"                  => "accessories",
-                        "parent"                  => null,
-                        "groups"                  => [
+                'action'         => 'product.removed',
+                'event_id'       => 'c306e088-fb76-479c-bbc0-18fef19da75d',
+                'event_datetime' => '2020-10-20T09:13:59+00:00',
+                'author'         => 'peter',
+                'author_type'    => 'ui',
+                'pim_source'     => 'https://demo.akeneo.com',
+                'data'           => [
+                    'resource' => [
+                        'identifier'              => '1111111304',
+                        'family'                  => 'accessories',
+                        'parent'                  => null,
+                        'groups'                  => [
                         ],
-                        "categories"              => [
-                            "master_accessories_sunglasses",
-                            "supplier_zaro",
+                        'categories'              => [
+                            'master_accessories_sunglasses',
+                            'supplier_zaro',
                         ],
-                        "enabled"                 => true,
-                        "values"                  => [
-                            "collection"  => [
+                        'enabled'                 => true,
+                        'values'                  => [
+                            'collection'  => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "winter_2020",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'winter_2020',
                                     ],
                                 ],
                             ],
-                            "image"       => [
+                            'image'       => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg",
-                                    "_links" => [
-                                        "download" => [
-                                            "href" => "http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg',
+                                    '_links' => [
+                                        'download' => [
+                                            'href' => 'http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download',
                                         ],
                                     ],
                                 ],
                             ],
-                            "ean"         => [
+                            'ean'         => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "1234567890316",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '1234567890316',
                                 ],
                             ],
-                            "name"        => [
+                            'name'        => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "Sunglasses",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => 'Sunglasses',
                                 ],
                             ],
-                            "weight"      => [
+                            'weight'      => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "amount" => "800.0000",
-                                        "unit"   => "GRAM",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'amount' => '800.0000',
+                                        'unit'   => 'GRAM',
                                     ],
                                 ],
                             ],
-                            "description" => [
+                            'description' => [
                                 [
-                                    "locale" => "en_US",
-                                    "scope"  => "ecommerce",
-                                    "data"   => "<p>Brown and gold sunglasses</p>",
+                                    'locale' => 'en_US',
+                                    'scope'  => 'ecommerce',
+                                    'data'   => '<p>Brown and gold sunglasses</p>',
                                 ],
                             ],
                         ],
-                        "created"                 => "2020-10-20T08:30:28+00:00",
-                        "updated"                 => "2020-10-20T09:13:59+00:00",
-                        "associations"            => [
-                            "PACK"         => [
-                                "groups"         => [
+                        'created'                 => '2020-10-20T08:30:28+00:00',
+                        'updated'                 => '2020-10-20T09:13:59+00:00',
+                        'associations'            => [
+                            'PACK'         => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
-                                ],
-                            ],
-                            "SUBSTITUTION" => [
-                                "groups"         => [
-                                ],
-                                "products"       => [
-                                ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "UPSELL"       => [
-                                "groups"         => [
+                            'SUBSTITUTION' => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "X_SELL"       => [
-                                "groups"         => [
+                            'UPSELL'       => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
+                                ],
+                            ],
+                            'X_SELL'       => [
+                                'groups'         => [
+                                ],
+                                'products'       => [
+                                ],
+                                'product_models' => [
                                 ],
                             ],
                         ],
-                        "quantified_associations" => [
+                        'quantified_associations' => [
                         ],
-                        "metadata"                => [
-                            "workflow_status" => "working_copy",
+                        'metadata'                => [
+                            'workflow_status' => 'working_copy',
                         ],
                     ],
                 ],
@@ -372,120 +372,120 @@ dataset('akeneo_events', [
         ],
     ]],
     [ProductModelCreated::class, [
-        "events" => [
+        'events' => [
             [
-                "action"         => "product_model.created",
-                "event_id"       => "c306e088-fb76-479c-bbc0-18fef19da75d",
-                "event_datetime" => "2020-10-20T09:13:59+00:00",
-                "author"         => "peter",
-                "author_type"    => "ui",
-                "pim_source"     => "https://demo.akeneo.com",
-                "data"           => [
-                    "resource" => [
-                        "identifier"              => "1111111304",
-                        "family"                  => "accessories",
-                        "parent"                  => null,
-                        "groups"                  => [
+                'action'         => 'product_model.created',
+                'event_id'       => 'c306e088-fb76-479c-bbc0-18fef19da75d',
+                'event_datetime' => '2020-10-20T09:13:59+00:00',
+                'author'         => 'peter',
+                'author_type'    => 'ui',
+                'pim_source'     => 'https://demo.akeneo.com',
+                'data'           => [
+                    'resource' => [
+                        'identifier'              => '1111111304',
+                        'family'                  => 'accessories',
+                        'parent'                  => null,
+                        'groups'                  => [
                         ],
-                        "categories"              => [
-                            "master_accessories_sunglasses",
-                            "supplier_zaro",
+                        'categories'              => [
+                            'master_accessories_sunglasses',
+                            'supplier_zaro',
                         ],
-                        "enabled"                 => true,
-                        "values"                  => [
-                            "collection"  => [
+                        'enabled'                 => true,
+                        'values'                  => [
+                            'collection'  => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "winter_2020",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'winter_2020',
                                     ],
                                 ],
                             ],
-                            "image"       => [
+                            'image'       => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg",
-                                    "_links" => [
-                                        "download" => [
-                                            "href" => "http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg',
+                                    '_links' => [
+                                        'download' => [
+                                            'href' => 'http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download',
                                         ],
                                     ],
                                 ],
                             ],
-                            "ean"         => [
+                            'ean'         => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "1234567890316",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '1234567890316',
                                 ],
                             ],
-                            "name"        => [
+                            'name'        => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "Sunglasses",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => 'Sunglasses',
                                 ],
                             ],
-                            "weight"      => [
+                            'weight'      => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "amount" => "800.0000",
-                                        "unit"   => "GRAM",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'amount' => '800.0000',
+                                        'unit'   => 'GRAM',
                                     ],
                                 ],
                             ],
-                            "description" => [
+                            'description' => [
                                 [
-                                    "locale" => "en_US",
-                                    "scope"  => "ecommerce",
-                                    "data"   => "<p>Brown and gold sunglasses</p>",
+                                    'locale' => 'en_US',
+                                    'scope'  => 'ecommerce',
+                                    'data'   => '<p>Brown and gold sunglasses</p>',
                                 ],
                             ],
                         ],
-                        "created"                 => "2020-10-20T08:30:28+00:00",
-                        "updated"                 => "2020-10-20T09:13:59+00:00",
-                        "associations"            => [
-                            "PACK"         => [
-                                "groups"         => [
+                        'created'                 => '2020-10-20T08:30:28+00:00',
+                        'updated'                 => '2020-10-20T09:13:59+00:00',
+                        'associations'            => [
+                            'PACK'         => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
-                                ],
-                            ],
-                            "SUBSTITUTION" => [
-                                "groups"         => [
-                                ],
-                                "products"       => [
-                                ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "UPSELL"       => [
-                                "groups"         => [
+                            'SUBSTITUTION' => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "X_SELL"       => [
-                                "groups"         => [
+                            'UPSELL'       => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
+                                ],
+                            ],
+                            'X_SELL'       => [
+                                'groups'         => [
+                                ],
+                                'products'       => [
+                                ],
+                                'product_models' => [
                                 ],
                             ],
                         ],
-                        "quantified_associations" => [
+                        'quantified_associations' => [
                         ],
-                        "metadata"                => [
-                            "workflow_status" => "working_copy",
+                        'metadata'                => [
+                            'workflow_status' => 'working_copy',
                         ],
                     ],
                 ],
@@ -493,120 +493,120 @@ dataset('akeneo_events', [
         ],
     ]],
     [ProductModelUpdated::class, [
-        "events" => [
+        'events' => [
             [
-                "action"         => "product_model.updated",
-                "event_id"       => "c306e088-fb76-479c-bbc0-18fef19da75d",
-                "event_datetime" => "2020-10-20T09:13:59+00:00",
-                "author"         => "peter",
-                "author_type"    => "ui",
-                "pim_source"     => "https://demo.akeneo.com",
-                "data"           => [
-                    "resource" => [
-                        "identifier"              => "1111111304",
-                        "family"                  => "accessories",
-                        "parent"                  => null,
-                        "groups"                  => [
+                'action'         => 'product_model.updated',
+                'event_id'       => 'c306e088-fb76-479c-bbc0-18fef19da75d',
+                'event_datetime' => '2020-10-20T09:13:59+00:00',
+                'author'         => 'peter',
+                'author_type'    => 'ui',
+                'pim_source'     => 'https://demo.akeneo.com',
+                'data'           => [
+                    'resource' => [
+                        'identifier'              => '1111111304',
+                        'family'                  => 'accessories',
+                        'parent'                  => null,
+                        'groups'                  => [
                         ],
-                        "categories"              => [
-                            "master_accessories_sunglasses",
-                            "supplier_zaro",
+                        'categories'              => [
+                            'master_accessories_sunglasses',
+                            'supplier_zaro',
                         ],
-                        "enabled"                 => true,
-                        "values"                  => [
-                            "collection"  => [
+                        'enabled'                 => true,
+                        'values'                  => [
+                            'collection'  => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "winter_2020",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'winter_2020',
                                     ],
                                 ],
                             ],
-                            "image"       => [
+                            'image'       => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg",
-                                    "_links" => [
-                                        "download" => [
-                                            "href" => "http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg',
+                                    '_links' => [
+                                        'download' => [
+                                            'href' => 'http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download',
                                         ],
                                     ],
                                 ],
                             ],
-                            "ean"         => [
+                            'ean'         => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "1234567890316",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '1234567890316',
                                 ],
                             ],
-                            "name"        => [
+                            'name'        => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "Sunglasses",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => 'Sunglasses',
                                 ],
                             ],
-                            "weight"      => [
+                            'weight'      => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "amount" => "800.0000",
-                                        "unit"   => "GRAM",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'amount' => '800.0000',
+                                        'unit'   => 'GRAM',
                                     ],
                                 ],
                             ],
-                            "description" => [
+                            'description' => [
                                 [
-                                    "locale" => "en_US",
-                                    "scope"  => "ecommerce",
-                                    "data"   => "<p>Brown and gold sunglasses</p>",
+                                    'locale' => 'en_US',
+                                    'scope'  => 'ecommerce',
+                                    'data'   => '<p>Brown and gold sunglasses</p>',
                                 ],
                             ],
                         ],
-                        "created"                 => "2020-10-20T08:30:28+00:00",
-                        "updated"                 => "2020-10-20T09:13:59+00:00",
-                        "associations"            => [
-                            "PACK"         => [
-                                "groups"         => [
+                        'created'                 => '2020-10-20T08:30:28+00:00',
+                        'updated'                 => '2020-10-20T09:13:59+00:00',
+                        'associations'            => [
+                            'PACK'         => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
-                                ],
-                            ],
-                            "SUBSTITUTION" => [
-                                "groups"         => [
-                                ],
-                                "products"       => [
-                                ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "UPSELL"       => [
-                                "groups"         => [
+                            'SUBSTITUTION' => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "X_SELL"       => [
-                                "groups"         => [
+                            'UPSELL'       => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
+                                ],
+                            ],
+                            'X_SELL'       => [
+                                'groups'         => [
+                                ],
+                                'products'       => [
+                                ],
+                                'product_models' => [
                                 ],
                             ],
                         ],
-                        "quantified_associations" => [
+                        'quantified_associations' => [
                         ],
-                        "metadata"                => [
-                            "workflow_status" => "working_copy",
+                        'metadata'                => [
+                            'workflow_status' => 'working_copy',
                         ],
                     ],
                 ],
@@ -614,120 +614,120 @@ dataset('akeneo_events', [
         ],
     ]],
     [ProductModelRemoved::class, [
-        "events" => [
+        'events' => [
             [
-                "action"         => "product_model.removed",
-                "event_id"       => "c306e088-fb76-479c-bbc0-18fef19da75d",
-                "event_datetime" => "2020-10-20T09:13:59+00:00",
-                "author"         => "peter",
-                "author_type"    => "ui",
-                "pim_source"     => "https://demo.akeneo.com",
-                "data"           => [
-                    "resource" => [
-                        "identifier"              => "1111111304",
-                        "family"                  => "accessories",
-                        "parent"                  => null,
-                        "groups"                  => [
+                'action'         => 'product_model.removed',
+                'event_id'       => 'c306e088-fb76-479c-bbc0-18fef19da75d',
+                'event_datetime' => '2020-10-20T09:13:59+00:00',
+                'author'         => 'peter',
+                'author_type'    => 'ui',
+                'pim_source'     => 'https://demo.akeneo.com',
+                'data'           => [
+                    'resource' => [
+                        'identifier'              => '1111111304',
+                        'family'                  => 'accessories',
+                        'parent'                  => null,
+                        'groups'                  => [
                         ],
-                        "categories"              => [
-                            "master_accessories_sunglasses",
-                            "supplier_zaro",
+                        'categories'              => [
+                            'master_accessories_sunglasses',
+                            'supplier_zaro',
                         ],
-                        "enabled"                 => true,
-                        "values"                  => [
-                            "collection"  => [
+                        'enabled'                 => true,
+                        'values'                  => [
+                            'collection'  => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "winter_2020",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'winter_2020',
                                     ],
                                 ],
                             ],
-                            "image"       => [
+                            'image'       => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg",
-                                    "_links" => [
-                                        "download" => [
-                                            "href" => "http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg',
+                                    '_links' => [
+                                        'download' => [
+                                            'href' => 'http://demo.akeneo.com/api/rest/v1/media-files/9/9/c/c/99cc83f105199c667505cfa8ec1458c8be4f0814_sunglasses.jpg/download',
                                         ],
                                     ],
                                 ],
                             ],
-                            "ean"         => [
+                            'ean'         => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "1234567890316",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => '1234567890316',
                                 ],
                             ],
-                            "name"        => [
+                            'name'        => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => "Sunglasses",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => 'Sunglasses',
                                 ],
                             ],
-                            "weight"      => [
+                            'weight'      => [
                                 [
-                                    "locale" => null,
-                                    "scope"  => null,
-                                    "data"   => [
-                                        "amount" => "800.0000",
-                                        "unit"   => "GRAM",
+                                    'locale' => null,
+                                    'scope'  => null,
+                                    'data'   => [
+                                        'amount' => '800.0000',
+                                        'unit'   => 'GRAM',
                                     ],
                                 ],
                             ],
-                            "description" => [
+                            'description' => [
                                 [
-                                    "locale" => "en_US",
-                                    "scope"  => "ecommerce",
-                                    "data"   => "<p>Brown and gold sunglasses</p>",
+                                    'locale' => 'en_US',
+                                    'scope'  => 'ecommerce',
+                                    'data'   => '<p>Brown and gold sunglasses</p>',
                                 ],
                             ],
                         ],
-                        "created"                 => "2020-10-20T08:30:28+00:00",
-                        "updated"                 => "2020-10-20T09:13:59+00:00",
-                        "associations"            => [
-                            "PACK"         => [
-                                "groups"         => [
+                        'created'                 => '2020-10-20T08:30:28+00:00',
+                        'updated'                 => '2020-10-20T09:13:59+00:00',
+                        'associations'            => [
+                            'PACK'         => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
-                                ],
-                            ],
-                            "SUBSTITUTION" => [
-                                "groups"         => [
-                                ],
-                                "products"       => [
-                                ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "UPSELL"       => [
-                                "groups"         => [
+                            'SUBSTITUTION' => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
                                 ],
                             ],
-                            "X_SELL"       => [
-                                "groups"         => [
+                            'UPSELL'       => [
+                                'groups'         => [
                                 ],
-                                "products"       => [
+                                'products'       => [
                                 ],
-                                "product_models" => [
+                                'product_models' => [
+                                ],
+                            ],
+                            'X_SELL'       => [
+                                'groups'         => [
+                                ],
+                                'products'       => [
+                                ],
+                                'product_models' => [
                                 ],
                             ],
                         ],
-                        "quantified_associations" => [
+                        'quantified_associations' => [
                         ],
-                        "metadata"                => [
-                            "workflow_status" => "working_copy",
+                        'metadata'                => [
+                            'workflow_status' => 'working_copy',
                         ],
                     ],
                 ],

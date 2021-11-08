@@ -23,7 +23,7 @@ it('gives a notice when a event is not implemented', function () {
     $response = postJson(route('akeneo-webhook'), [
         'events' => [
             [
-                "action" => "product.unsupported",
+                'action' => 'product.unsupported',
             ],
         ],
     ]);
