@@ -16,5 +16,7 @@ return [
         ],
     ],
 
+    'events_secret' => env('AKENEO_EVENTS_SECRET'),
+
     'cache_ttl' => 30,
 ];
