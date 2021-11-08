@@ -68,8 +68,8 @@ it('can change a product\'s values', function () {
     // TODO: Subject to change!
 
     $product = new Product([
-        'identifier'   => 'test',
-        'values' => [
+        'identifier' => 'test',
+        'values'     => [
             'product_name' => [
                 [
                     'scope'  => 'akeneo',
