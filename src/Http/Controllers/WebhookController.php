@@ -23,7 +23,7 @@ class WebhookController
         foreach ($request->json()->get('events') as $event) {
             // TODO: authenticate authenticity request with secret
 
-            $eventAction = (string)Str::of($event['action'])
+            $eventAction = (string) Str::of($event['action'])
                 ->replace('.', '_')
                 ->studly();
 
@@ -40,7 +40,6 @@ class WebhookController
 
             event(new $eventClass($event));
         }
-
 
         return response()->json([
             'message' => 'payload handled',
