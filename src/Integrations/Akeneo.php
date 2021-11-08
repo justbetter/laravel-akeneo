@@ -3,6 +3,7 @@
 namespace JustBetter\Akeneo\Integrations;
 
 use Akeneo\Pim\ApiClient\AkeneoPimClientInterface;
+use Akeneo\Pim\ApiClient\Api\AttributeApi;
 use Akeneo\Pim\ApiClient\Api\ProductApi;
 use Akeneo\Pim\ApiClient\Api\ProductModelApi;
 use BadMethodCallException;
@@ -11,6 +12,7 @@ use JustBetter\Akeneo\Exceptions\AkeneoConfigurationException;
 /**
  * @method static ProductModelApi getProductModelApi()
  * @method static ProductApi getProductApi()
+ * @method static AttributeApi getAttributeApi()
  */
 class Akeneo
 {
