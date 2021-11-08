@@ -1,5 +1,8 @@
 <?php
 
+use JustBetter\Akeneo\Facades\Akeneo;
+use JustBetter\Akeneo\Models\Product;
+use JustBetter\Akeneo\Tests\Fakes\Api\FakeProductApi;
 use JustBetter\Akeneo\Tests\Fakes\Models\FakeModel;
 
 it('can construct a model', function () {
@@ -40,3 +43,49 @@ it('can be transformed into an array', function () {
     expect((array) $model)->toBeArray();
     expect($model->toArray())->toBeArray();
 });
+
+it('can filter models', function () {
+    Akeneo::spy()
+        ->expects('getProductApi')
+        ->andReturn($fakeProductApi = new FakeProductApi());
+
+    Product::query()
+        ->where('code', 'test')
+        ->get();
+
+    expect($fakeProductApi->all)
+        ->query->toBeArray()
+        ->query->search->toMatchArray([
+            'code' => [
+                [
+                    'operator' => '=',
+                    'value'    => 'test',
+                ],
+            ],
+        ]);
+});
+
+it('has a fallback to the query builder', function () {
+    Akeneo::spy()
+        ->expects('getProductApi')
+        ->andReturn($fakeProductApi = new FakeProductApi());
+
+    Product::where('code', 'test')
+        ->get();
+
+    expect($fakeProductApi->all)
+        ->query->toBeArray()
+        ->query->search->toMatchArray([
+            'code' => [
+                [
+                    'operator' => '=',
+                    'value'    => 'test',
+                ],
+            ],
+        ]);
+});
+
+it('Throws exception if method does not exist on querybuilder', function () {
+    Product::fakeMethod('code', 'test')
+        ->get();
+})->expectException(BadMethodCallException::class);
