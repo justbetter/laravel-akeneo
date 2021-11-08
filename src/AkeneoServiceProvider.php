@@ -16,6 +16,7 @@ class AkeneoServiceProvider extends PackageServiceProvider
 
         $package
             ->name('akeneo')
-            ->hasConfigFile();
+            ->hasConfigFile()
+            ->hasRoute('api');
     }
 }
