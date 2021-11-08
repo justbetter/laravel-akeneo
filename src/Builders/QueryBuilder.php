@@ -14,8 +14,7 @@ class QueryBuilder
 
     public function __construct(
         protected ApiModel $model
-    )
-    {
+    ) {
         $this->searchBuilder = new SearchBuilder;
     }
 

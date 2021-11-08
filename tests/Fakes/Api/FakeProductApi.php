@@ -76,6 +76,7 @@ class FakeProductApi
     public function all(int $pageSize = 10, array $queryParameters = [])
     {
         $this->all['query'] = $queryParameters;
+
         return LazyCollection::times($pageSize, function () {
             return ['code' => '::test::'];
         });
