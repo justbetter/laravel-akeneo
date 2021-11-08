@@ -117,5 +117,4 @@ it('can delete a product', function () {
     $model->delete();
 
     expect($fakeProductApi->delete)->toBe('test');
-
 });
