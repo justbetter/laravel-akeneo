@@ -23,17 +23,18 @@ class ValidateAkeneoRequest
         $signedPayload = "{$timestamp}.{$requestBody}";
 
         // Generate a hash signature.
-        $generatedSignature = hash_hmac("sha256", $signedPayload, $secret);
+        $generatedSignature = hash_hmac('sha256', $signedPayload, $secret);
 
         // Compare the original and generated signature.
         if (! hash_equals($originalSignature, $generatedSignature)) {
             return response()->json(
                 data: [
-                    'message' => 'Unauthorized'
+                    'message' => 'Unauthorized',
                 ],
                 status: 401
             );
         }
+
         return $next($request);
     }
 }
