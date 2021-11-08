@@ -105,7 +105,7 @@ abstract class ApiModel implements ArrayAccess, Arrayable
         }
 
         throw new BadMethodCallException(
-            __("Method `:method` does not exist on class `:class`", ['method' => $method, 'class' => get_class($builder)])
+            __('Method `:method` does not exist on class `:class`', ['method' => $method, 'class' => get_class($builder)])
         );
     }
 }
