@@ -22,7 +22,7 @@ composer require justbetter/laravel-akeneo
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="JustBetter\Akeneo\AkeneoServiceProvider" --tag="laravel-akeneo-config"
+php artisan vendor:publish --provider="JustBetter\Akeneo\AkeneoServiceProvider" --tag="akeneo-config"
 ```
 
 This is the contents of the published config file:
@@ -32,6 +32,7 @@ return [
     'models' => [
         'product_model' => \JustBetter\Akeneo\Models\ProductModel::class,
         'product' => \JustBetter\Akeneo\Models\Product::class,
+        'attribute' => \JustBetter\Akeneo\Models\Attribute::class,
     ],
     
     'connections' => [
