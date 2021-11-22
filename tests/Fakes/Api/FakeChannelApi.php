@@ -28,21 +28,21 @@ class FakeChannelApi
             'code' => 'test',
             'currencies'    => [
                 'EUR',
-                'USD'
+                'USD',
             ],
             'locales'     => [
                 'nl_NL',
                 'de_DE',
-                'en_US'
+                'en_US',
             ],
             'category_tree' => 'master',
             'conversion_units'     => [
-                'weight' => 'KILOGRAM'
+                'weight' => 'KILOGRAM',
             ],
             'labels'     => [
                 'nl_NL' => 'Test nl_NL',
                 'de_DE' => 'Test de_DE',
-                'en_US' => 'Test en_US'
+                'en_US' => 'Test en_US',
             ],
 
         ];

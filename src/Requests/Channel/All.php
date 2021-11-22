@@ -11,7 +11,7 @@ class All extends AllRequest
     public function send(): Collection
     {
         return cache()->remember(
-            'akeneo_channel_all_' . json_encode($this->filters),
+            'akeneo_channel_all_'.json_encode($this->filters),
             config('akeneo.cache_ttl', 0),
             function () {
                 $models = [];

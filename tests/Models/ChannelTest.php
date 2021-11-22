@@ -2,12 +2,9 @@
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\LazyCollection;
-use JustBetter\Akeneo\Exceptions\ModelNotFoundException;
 use JustBetter\Akeneo\Facades\Akeneo;
 use JustBetter\Akeneo\Models\Channel;
-use JustBetter\Akeneo\Models\Product;
 use JustBetter\Akeneo\Tests\Fakes\Api\FakeChannelApi;
-use JustBetter\Akeneo\Tests\Fakes\Api\FakeProductApi;
 use JustBetter\Akeneo\Tests\Fakes\FakeClientBuilder;
 
 beforeEach(function () {
