@@ -5,6 +5,7 @@ return [
         'product_model' => \JustBetter\Akeneo\Models\ProductModel::class,
         'product'       => \JustBetter\Akeneo\Models\Product::class,
         'attribute'     => \JustBetter\Akeneo\Models\Attribute::class,
+        'channel'       => \JustBetter\Akeneo\Models\Channel::class,
     ],
 
     'connections' => [
