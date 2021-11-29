@@ -15,6 +15,8 @@ class All extends AllRequest
 
             $items = Akeneo::getAttributeApi()->all(50);
 
+            $model = config('akeneo.models.attribute');
+
             foreach ($items as $item) {
                 $model = \JustBetter\Akeneo\Akeneo::getAttributeTypeClass($item['type']);
 
