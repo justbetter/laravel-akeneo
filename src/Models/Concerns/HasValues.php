@@ -4,12 +4,20 @@ namespace JustBetter\Akeneo\Models\Concerns;
 
 trait HasValues
 {
-    public function setValue(string $key, mixed $data): static
+    public function setValue(mixed $data, ?string $locale = null, ?string $scope = null): void
     {
-        $values = $this['values'];
-        $values[$key][0]['data'] = $data;
-        $this['values'] = $values;
+        $items = collect($this->selected)
+            ->where('locale', '!=', $locale)
+            ->where('scope', '!=', $scope)
+            ->all();
 
-        return $this;
+        $items[] = [
+            'locale' => $locale,
+            'scope'  => $scope,
+            'data' => $data
+        ];
+
+        $this->selected = $items;
+
     }
 }

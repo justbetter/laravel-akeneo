@@ -10,13 +10,13 @@ class Lazy extends LazyRequest
 {
     public function send(): LazyCollection
     {
-        $model = config('akeneo.models.attribute');
+        return LazyCollection::make(function () {
+            $attributes = Akeneo::getAttributeApi()->all(50);
 
-        return LazyCollection::make(function () use ($model) {
-            $products = Akeneo::getAttributeApi()->all(50);
+            foreach ($attributes as $item) {
+                $model = \JustBetter\Akeneo\Akeneo::getAttributeTypeClass($item['type']);
 
-            foreach ($products as $product) {
-                yield new $model($product);
+                yield new $model($item);
             }
         });
     }

@@ -5,6 +5,7 @@ use Illuminate\Support\LazyCollection;
 use JustBetter\Akeneo\Facades\Akeneo;
 use JustBetter\Akeneo\Models\ProductModel;
 use JustBetter\Akeneo\Tests\Fakes\Api\FakeProductModelApi;
+use JustBetter\Akeneo\Tests\Fakes\FakeAkeneoFacade;
 use JustBetter\Akeneo\Tests\Fakes\FakeClientBuilder;
 
 beforeEach(function () {
@@ -20,9 +21,7 @@ beforeEach(function () {
 });
 
 it('can fetch all product models lazily from Akeneo and formats it correctly', function () {
-    Akeneo::spy()
-        ->expects('getProductModelApi')
-        ->andReturn(new FakeProductModelApi());
+    Akeneo::fake();
 
     $models = ProductModel::lazy();
 
@@ -32,9 +31,7 @@ it('can fetch all product models lazily from Akeneo and formats it correctly', f
 });
 
 it('can fetch all product models from Akeneo and formats it correctly', function () {
-    Akeneo::spy()
-        ->expects('getProductModelApi')
-        ->andReturn(new FakeProductModelApi());
+    Akeneo::fake();
 
     $models = ProductModel::all();
 
@@ -44,10 +41,7 @@ it('can fetch all product models from Akeneo and formats it correctly', function
 });
 
 it('can find a product model', function () {
-    Akeneo::spy()
-        ->expects('getProductModelApi')
-        ->times(3)
-        ->andReturn(new FakeProductModelApi());
+    Akeneo::fake();
 
     expect(ProductModel::find('test'))->toBeInstanceOf(ProductModel::class);
 
@@ -57,14 +51,13 @@ it('can find a product model', function () {
 });
 
 it('throws an error when a model is not found with findOrFail', function () {
-    Akeneo::spy()
-        ->expects('getProductModelApi')
-        ->andReturn(new FakeProductModelApi());
+    Akeneo::fake();
 
     ProductModel::findOrFail('testing');
 })->expectException(\JustBetter\Akeneo\Exceptions\ModelNotFoundException::class);
 
 it('can change a product model\'s values', function () {
+    Akeneo::fake();
     // TODO: Subject to change!
 
     $model = new ProductModel([
@@ -72,34 +65,30 @@ it('can change a product model\'s values', function () {
         'values' => [
             'product_name' => [
                 [
-                    'scope' => 'akeneo',
-                    'locale' => 'nl_NL',
+                    'scope' => null,
+                    'locale' => null,
                     'data' => 'test model',
                 ],
             ],
         ],
     ]);
 
-    $model->setValue('product_name', 'test model 2');
+    $model->product_name->setValue('test model 2');
 
-    expect($model->values['product_name'][0]['data'])->toBe('test model 2');
+    expect($model->product_name->getSelected()[0]['data'])->toBe('test model 2');
 });
 
 it('can save a product model', function () {
-    $fakeProductModelApi = new FakeProductModelApi();
-    Akeneo::spy()
-        ->expects('getProductModelApi')
-        ->times(2)
-        ->andReturn($fakeProductModelApi);
+    Akeneo::fake();
 
     $model = ProductModel::find('test');
 
-    $model->setValue('product_name', 'test product 2');
+    $model->product_name->setValue('test product 2');
 
     $model->save();
 
-    expect($fakeProductModelApi->upsert)
+    expect(FakeProductModelApi::$upsert)
         ->code->toBe('test');
 
-    expect($fakeProductModelApi->upsert['data']['values']['product_name'][0]['data'])->toBe('test product 2');
+    expect(FakeProductModelApi::$upsert['data']['values']['product_name'][0]['data'])->toBe('test product 2');
 });

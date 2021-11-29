@@ -4,6 +4,7 @@ namespace JustBetter\Akeneo\Requests\ProductModel;
 
 use Illuminate\Support\Collection;
 use JustBetter\Akeneo\Facades\Akeneo;
+use JustBetter\Akeneo\Models\Attribute;
 use JustBetter\Akeneo\Requests\AllRequest;
 
 class All extends AllRequest
@@ -18,6 +19,7 @@ class All extends AllRequest
             $model = config('akeneo.models.product_model');
 
             foreach ($productModels as $productModel) {
+
                 $models[] = new $model($productModel);
             }
 

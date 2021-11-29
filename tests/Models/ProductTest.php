@@ -20,9 +20,7 @@ beforeEach(function () {
 });
 
 it('can fetch all products from Akeneo lazily and formats it correctly', function () {
-    Akeneo::spy()
-        ->expects('getProductApi')
-        ->andReturn(new FakeProductApi());
+    Akeneo::fake();
 
     $models = Product::lazy();
 
@@ -32,9 +30,7 @@ it('can fetch all products from Akeneo lazily and formats it correctly', functio
 });
 
 it('can fetch all products from Akeneo and formats it correctly', function () {
-    Akeneo::spy()
-        ->expects('getProductApi')
-        ->andReturn(new FakeProductApi());
+    Akeneo::fake();
 
     $models = Product::all();
 
@@ -44,77 +40,61 @@ it('can fetch all products from Akeneo and formats it correctly', function () {
 });
 
 it('can find a product', function () {
-    Akeneo::spy()
-        ->expects('getProductApi')
-        ->times(3)
-        ->andReturn(new FakeProductApi());
+    Akeneo::fake();
 
     expect(Product::find('test'))->toBeInstanceOf(Product::class);
 
-    expect(Product::find('testing'))->toBeNull();
+    expect(Product::find('exception'))->toBeNull();
 
     expect(Product::findOrFail('test'))->toBeInstanceOf(Product::class);
 });
 
 it('throws an error when a product is not found with findOrFail', function () {
-    Akeneo::spy()
-        ->expects('getProductApi')
-        ->andReturn(new FakeProductApi());
+    Akeneo::fake();
 
-    Product::findOrFail('testing');
+    Product::findOrFail('exception');
 })->expectException(\JustBetter\Akeneo\Exceptions\ModelNotFoundException::class);
 
 it('can change a product\'s values', function () {
-    // TODO: Subject to change!
-
+    Akeneo::fake();
     $product = new Product([
         'identifier' => 'test',
         'values'     => [
             'product_name' => [
                 [
-                    'scope'  => 'akeneo',
-                    'locale' => 'nl_NL',
+                    'scope'  => null,
+                    'locale' => null,
                     'data'   => 'test model',
                 ],
             ],
         ],
     ]);
 
-    $product->setValue('product_name', 'test model 2');
+    $product->product_name->setValue('test model 2');
 
-    expect($product->values['product_name'][0]['data'])->toBe('test model 2');
+    expect($product->product_name->getSelected()[0]['data'])->toBe('test model 2');
 });
 
 it('can save a product', function () {
-    $fakeProductApi = new FakeProductApi();
-
-    Akeneo::spy()
-        ->expects('getProductApi')
-        ->times(2)
-        ->andReturn($fakeProductApi);
+    Akeneo::fake();
 
     $model = Product::find('test');
 
-    $model->setValue('product_name', 'test product 2');
+    $model->product_name->setValue('test product 2');
 
     $model->save();
 
-    expect($fakeProductApi->upsert)
+    expect(FakeProductApi::$upsert)
         ->code->toBe('test');
 
-    expect($fakeProductApi->upsert['data']['values']['product_name'][0]['data'])->toBe('test product 2');
+    expect(FakeProductApi::$upsert['data']['values']['product_name'][0]['data'])->toBe('test product 2');
 });
 
 it('can delete a product', function () {
-    $fakeProductApi = new FakeProductApi();
-
-    Akeneo::spy()
-        ->expects('getProductApi')
-        ->times(2)
-        ->andReturn($fakeProductApi);
+    Akeneo::fake();
 
     $model = Product::find('test');
     $model->delete();
 
-    expect($fakeProductApi->delete)->toBe('test');
+    expect(FakeProductApi::$delete)->toBe('test');
 });

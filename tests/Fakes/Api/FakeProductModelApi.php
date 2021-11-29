@@ -9,7 +9,7 @@ use Illuminate\Support\LazyCollection;
 
 class FakeProductModelApi
 {
-    public array $upsert = [];
+    public static array $upsert = [];
 
     public function create(string $code, array $data = []): int
     {
@@ -28,8 +28,8 @@ class FakeProductModelApi
             'values' => [
                 'product_name' => [
                     [
-                        'scope' => 'akeneo',
-                        'locale' => 'nl_NL',
+                        'scope' => null,
+                        'locale' => null,
                         'data' => 'test product',
                     ],
                 ],
@@ -45,14 +45,26 @@ class FakeProductModelApi
     public function all(int $pageSize = 10, array $queryParameters = [])
     {
         return LazyCollection::times($pageSize, function () {
-            return ['code' => '::test::'];
+            return [
+                'code' => '::test::',
+                'family' => 'products',
+                'values' => [
+                    'product_name' => [
+                        [
+                            'scope' => null,
+                            'locale' => null,
+                            'data' => 'test product',
+                        ],
+                    ],
+                ],
+            ];
         });
     }
 
     public function upsert(string $code, array $data = []): int
     {
-        $this->upsert['code'] = $code;
-        $this->upsert['data'] = $data;
+        self::$upsert['code'] = $code;
+        self::$upsert['data'] = $data;
 
         return true;
     }
@@ -60,5 +72,10 @@ class FakeProductModelApi
     public function upsertList($resources): \Traversable
     {
         //
+    }
+
+    public static function setUp(): void
+    {
+        self::$upsert = [];
     }
 }

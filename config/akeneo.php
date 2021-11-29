@@ -5,6 +5,12 @@ return [
         'product_model' => \JustBetter\Akeneo\Models\ProductModel::class,
         'product'       => \JustBetter\Akeneo\Models\Product::class,
         'attribute'     => \JustBetter\Akeneo\Models\Attribute::class,
+        'attribute_types' => [
+            'Simpleselect' => \JustBetter\Akeneo\Models\Attribute\Simpleselect::class,
+            'Multiselect' => \JustBetter\Akeneo\Models\Attribute\Multiselect::class,
+            'Text' => \JustBetter\Akeneo\Models\Attribute\Text::class,
+            'Date' => \JustBetter\Akeneo\Models\Attribute\Date::class,
+        ],
         'channel'       => \JustBetter\Akeneo\Models\Channel::class,
     ],
 

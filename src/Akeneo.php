@@ -3,6 +3,7 @@
 namespace JustBetter\Akeneo;
 
 use ErrorException;
+use Illuminate\Support\Str;
 use JustBetter\Akeneo\Models\ApiModel;
 
 class Akeneo
@@ -13,6 +14,10 @@ class Akeneo
             get_class($model)
         );
 
+        if (in_array($modelName, array_keys(config('akeneo.models.attribute_types')))) {
+            $modelName = 'Attribute';
+        }
+
         $class = "JustBetter\\Akeneo\\Requests\\{$modelName}\\{$type}";
 
         if (! class_exists($class)) {
@@ -22,5 +27,18 @@ class Akeneo
         }
 
         return $class;
+    }
+
+    public static function getAttributeTypeClass(string $type): string
+    {
+        $attributeType = Str::of($type)->replace('pim_catalog_', '')->studly();
+
+        $model = config('akeneo.models.attribute_types.'.$attributeType);
+
+        if (! $model) {
+            throw new \Exception("Model `{$attributeType}` is not defined in the config");
+        }
+
+        return $model;
     }
 }

@@ -23,6 +23,7 @@ abstract class ApiModel implements ArrayAccess, Arrayable
 
     public function __construct(array $attributes = [])
     {
+        $this->originalAttributes = $attributes;
         $this->attributes = $attributes;
     }
 
@@ -75,6 +76,10 @@ abstract class ApiModel implements ArrayAccess, Arrayable
         $class = self::guessApiNamespace('Upsert');
 
         $data = $this->toArray();
+
+        if (! $this instanceof Attribute) {
+            $data['values'] = array_map(fn ($attribute) => $attribute->getSelected(), $data['values']);
+        }
 
         unset($data[$this->primaryKey]);
 
