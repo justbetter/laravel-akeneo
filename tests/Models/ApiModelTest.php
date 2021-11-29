@@ -112,5 +112,3 @@ it('can access attributes', function () {
     expect($product)
         ->product_name->toBeInstanceOf(Attribute::class);
 });
-
-

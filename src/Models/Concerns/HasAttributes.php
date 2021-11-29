@@ -2,9 +2,7 @@
 
 namespace JustBetter\Akeneo\Models\Concerns;
 
-use Illuminate\Support\Str;
 use JustBetter\Akeneo\Models\Attribute;
-use JustBetter\Akeneo\Models\Option;
 
 trait HasAttributes
 {
@@ -18,7 +16,6 @@ trait HasAttributes
         }
 
         if (array_key_exists($name, $this->attributes['values'])) {
-
             if ($this->attributes['values'][$name] instanceof Attribute) {
                 return $this->attributes['values'][$name];
             }

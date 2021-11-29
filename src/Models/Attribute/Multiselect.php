@@ -6,5 +6,4 @@ use JustBetter\Akeneo\Models\Attribute;
 
 class Multiselect extends Attribute
 {
-
 }
