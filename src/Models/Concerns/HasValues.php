@@ -14,10 +14,9 @@ trait HasValues
         $items[] = [
             'locale' => $locale,
             'scope'  => $scope,
-            'data' => $data
+            'data' => $data,
         ];
 
         $this->selected = $items;
-
     }
 }

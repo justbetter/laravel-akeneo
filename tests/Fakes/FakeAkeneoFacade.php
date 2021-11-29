@@ -2,7 +2,6 @@
 
 namespace JustBetter\Akeneo\Tests\Fakes;
 
-
 use Illuminate\Support\Str;
 
 class FakeAkeneoFacade
