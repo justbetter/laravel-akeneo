@@ -66,7 +66,7 @@ class FakeChannelApi
     {
         self::$delete = $code;
 
-        return (int)($code === 'test');
+        return (int) ($code === 'test');
     }
 
     public function upsertList($resources): \Traversable
