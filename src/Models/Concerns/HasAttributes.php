@@ -3,6 +3,7 @@
 namespace JustBetter\Akeneo\Models\Concerns;
 
 use JustBetter\Akeneo\Models\Attribute;
+use JustBetter\Akeneo\DataObjects\Option;
 
 trait HasAttributes
 {
@@ -23,6 +24,13 @@ trait HasAttributes
             $attribute = Attribute::find($name);
 
             $options = $this->attributes['values'][$name];
+
+            if ($attribute instanceof Attribute\Simpleselect || $attribute instanceof Attribute\Multiselect) {
+                $options = array_map(
+                    fn ($option) => Option::make($option['data'], $option['locale'], $option['scope']),
+                    $options
+                );
+            }
 
             $attribute->selected = $options;
 

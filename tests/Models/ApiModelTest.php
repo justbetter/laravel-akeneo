@@ -1,5 +1,6 @@
 <?php
 
+use JustBetter\Akeneo\DataObjects\Option;
 use JustBetter\Akeneo\Exceptions\UndefinedAttributeTypeException;
 use JustBetter\Akeneo\Facades\Akeneo;
 use JustBetter\Akeneo\Models\Attribute;
@@ -131,3 +132,72 @@ it('throws exception when an attribute type is isn\'t defined in config', functi
 
     $product = Product::find('test')->product_name;
 })->throws(UndefinedAttributeTypeException::class);
+
+it('can handle simpleselect', function () {
+    Akeneo::fake();
+
+    FakeAttributeApi::$attributeType = 'pim_catalog_simpleselect';
+
+    $product = Product::find('test');
+
+    expect($product->product_name)
+        ->toBeInstanceOf(Attribute\Simpleselect::class);
+
+    expect($product->product_name->getSelected())
+        ->toMatchArray([
+            Option::make('testing product')
+        ]);
+
+    $product->product_name->addOption(
+        Option::make('testing product 2')
+    );
+
+    expect($product->product_name->getSelected())
+        ->toMatchArray([
+            Option::make('testing product 2')
+        ]);
+});
+
+it('can handle multiselects', function () {
+    Akeneo::fake();
+
+    FakeAttributeApi::$attributeType = 'pim_catalog_multiselect';
+
+    $product = Product::find('test');
+
+    expect($product->product_name)
+        ->toBeInstanceOf(Attribute\Multiselect::class);
+
+    expect($product->product_name->getSelected())
+        ->toMatchArray([
+            Option::make('testing product')
+        ]);
+
+    $product->product_name->addOption(
+        Option::make('testing product 2')
+    );
+
+    expect($product->product_name->getSelected())
+        ->toMatchArray([
+            Option::make('testing product'),
+            Option::make('testing product 2')
+        ]);
+
+    $product->product_name->removeOption(
+        Option::make('testing product')
+    );
+
+    expect($product->product_name->getSelected())
+        ->toMatchArray([
+            1 => Option::make('testing product 2')
+        ]);
+
+    $product->product_name->syncOptions([
+        Option::make('testing product 4')
+    ]);
+
+    expect($product->product_name->getSelected())
+        ->toMatchArray([
+            Option::make('testing product 4')
+        ]);
+});

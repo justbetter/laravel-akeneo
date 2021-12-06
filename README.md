@@ -100,16 +100,43 @@ Find a resource by its code
 $product = Product::find('code-123');
 ```
 
-#### Find
-Save an altered model and persist it to akeneo
+#### Attributes
+Calling an attribute code on a model will return a class of that attributes type.
+These are defined in the config and can be extended easily.
+```php
+$product->product_name->setValue(
+    data: 'test product 3',
+    locale: null, # default
+    scope: null # default
+);
+```
 
-There is also a method `setValue()` to change attributes. 
-`NOTE: It's subject to change and in the near future each value 
-(attribute) will become it's own class by the attributes type`
+##### Options
+Options can be constructed and passed to attributes compatible with them
+```php
+$option = \JustBetter\Akeneo\DataObjects\Option::make(
+    data: 'tag 1',
+    locale: null,
+    scope: null  
+)
+
+$product->tags->addOption($option);
+
+$product->tags->removeOption($option);
+
+$product->tags->syncOptions([$option1, $option2]);
+```
+
+#### Save
+Save an altered model and persist it to akeneo
 ```php
 $product = Product::find('code-123');
 
-$product->setValue('product_name', 'test product 3');
+$product->product_name->setValue(
+    data: 'test product 3',
+    locale: null, # default
+    scope: null # default
+);
 
 $product->save();
 ```
