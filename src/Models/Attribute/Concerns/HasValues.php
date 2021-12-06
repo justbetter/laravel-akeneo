@@ -1,6 +1,6 @@
 <?php
 
-namespace JustBetter\Akeneo\Models\Concerns;
+namespace JustBetter\Akeneo\Models\Attribute\Concerns;
 
 trait HasValues
 {
