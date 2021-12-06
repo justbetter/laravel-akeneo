@@ -11,6 +11,7 @@ class FakeAttributeApi
 {
     public static array $upsert = [];
     public static string $delete = '';
+    public static string $attributeType = 'pim_catalog_text';
 
     public function create(string $code, array $data = []): int
     {
@@ -25,7 +26,7 @@ class FakeAttributeApi
 
         return [
             'code'                   => $code,
-            'type'                   => 'pim_catalog_text',
+            'type'                   => self::$attributeType,
             'group'                  => 'marketing',
             'unique'                 => false,
             'useable_as_grid_filter' => true,
@@ -70,7 +71,7 @@ class FakeAttributeApi
         return LazyCollection::times($pageSize, function () {
             return [
                 'code'                   => '::test::',
-                'type'                   => 'pim_catalog_date',
+                'type'                   => self::$attributeType,
                 'group'                  => 'marketing',
                 'unique'                 => false,
                 'useable_as_grid_filter' => true,
@@ -130,5 +131,6 @@ class FakeAttributeApi
     {
         self::$upsert = [];
         self::$delete = '';
+        self::$attributeType = 'pim_catalog_text';
     }
 }

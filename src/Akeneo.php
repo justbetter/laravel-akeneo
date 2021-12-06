@@ -4,6 +4,7 @@ namespace JustBetter\Akeneo;
 
 use ErrorException;
 use Illuminate\Support\Str;
+use JustBetter\Akeneo\Exceptions\UndefinedAttributeTypeException;
 use JustBetter\Akeneo\Models\ApiModel;
 
 class Akeneo
@@ -36,7 +37,7 @@ class Akeneo
         $model = config('akeneo.models.attribute_types.'.$attributeType);
 
         if (! $model) {
-            throw new \Exception("Model `{$attributeType}` is not defined in the config");
+            throw new UndefinedAttributeTypeException("Model `{$attributeType}` is not defined in the config");
         }
 
         return $model;

@@ -1,8 +1,10 @@
 <?php
 
+use JustBetter\Akeneo\Exceptions\UndefinedAttributeTypeException;
 use JustBetter\Akeneo\Facades\Akeneo;
 use JustBetter\Akeneo\Models\Attribute;
 use JustBetter\Akeneo\Models\Product;
+use JustBetter\Akeneo\Tests\Fakes\Api\FakeAttributeApi;
 use JustBetter\Akeneo\Tests\Fakes\Api\FakeProductApi;
 use JustBetter\Akeneo\Tests\Fakes\Models\FakeModel;
 
@@ -112,3 +114,20 @@ it('can access attributes', function () {
     expect($product)
         ->product_name->toBeInstanceOf(Attribute::class);
 });
+
+it('returns null when a attribute doesn\'t exist', function () {
+    Akeneo::fake();
+
+    $product = Product::all()->first();
+
+    expect($product)
+        ->non_existing->toBeNull();
+});
+
+it('throws exception when an attribute type is isn\'t defined in config', function () {
+    Akeneo::fake();
+
+    FakeAttributeApi::$attributeType = 'pim_catalog_test';
+
+    $product = Product::find('test')->product_name;
+})->throws(UndefinedAttributeTypeException::class);
