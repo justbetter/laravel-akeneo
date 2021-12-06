@@ -2,8 +2,8 @@
 
 namespace JustBetter\Akeneo\Models\Concerns;
 
-use JustBetter\Akeneo\Models\Attribute;
 use JustBetter\Akeneo\DataObjects\Option;
+use JustBetter\Akeneo\Models\Attribute;
 
 trait HasAttributes
 {
