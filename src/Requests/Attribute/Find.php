@@ -12,13 +12,13 @@ class Find extends FindRequest
     public function send(): ?Attribute
     {
         try {
-            $product = Akeneo::getAttributeApi()->get($this->code);
+            $attributes = Akeneo::getAttributeApi()->get($this->code);
         } catch (NotFoundHttpException $e) {
             return null;
         }
 
-        $model = config('akeneo.models.attribute');
+        $model = \JustBetter\Akeneo\Akeneo::getAttributeTypeClass($attributes['type']);
 
-        return new $model($product);
+        return new $model($attributes);
     }
 }

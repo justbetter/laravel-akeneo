@@ -21,9 +21,7 @@ beforeEach(function () {
 });
 
 it('can fetch all attributes from Akeneo lazily and format it correctly', function () {
-    Akeneo::spy()
-        ->expects('getAttributeApi')
-        ->andReturn(new FakeAttributeApi());
+    Akeneo::fake();
 
     $models = Attribute::lazy();
 
@@ -33,9 +31,7 @@ it('can fetch all attributes from Akeneo lazily and format it correctly', functi
 });
 
 it('can fetch all attributes from Akeneo and formats it correctly', function () {
-    Akeneo::spy()
-        ->expects('getAttributeApi')
-        ->andReturn(new FakeAttributeApi());
+    Akeneo::fake();
 
     $models = Attribute::all();
 
@@ -45,33 +41,23 @@ it('can fetch all attributes from Akeneo and formats it correctly', function () 
 });
 
 it('can find a attribute', function () {
-    Akeneo::spy()
-        ->expects('getAttributeApi')
-        ->times(3)
-        ->andReturn(new FakeAttributeApi());
+    Akeneo::fake();
 
     expect(Attribute::find('test'))->toBeInstanceOf(Attribute::class);
 
-    expect(Attribute::find('testing'))->toBeNull();
+    expect(Attribute::find('exception'))->toBeNull();
 
     expect(Attribute::findOrFail('test'))->toBeInstanceOf(Attribute::class);
 });
 
 it('throws an error when a attribute is not found with findOrFail', function () {
-    Akeneo::spy()
-        ->expects('getAttributeApi')
-        ->andReturn(new FakeAttributeApi());
+    Akeneo::fake();
 
-    Attribute::findOrFail('testing');
+    Attribute::findOrFail('exception');
 })->expectException(ModelNotFoundException::class);
 
 it('can save a attribute', function () {
-    $fakeAttributeApi = new FakeAttributeApi();
-
-    Akeneo::spy()
-        ->expects('getAttributeApi')
-        ->times(2)
-        ->andReturn($fakeAttributeApi);
+    Akeneo::fake();
 
     $model = Attribute::find('test');
 
@@ -79,6 +65,6 @@ it('can save a attribute', function () {
 
     $model->save();
 
-    expect($fakeAttributeApi->upsert)
+    expect(FakeAttributeApi::$upsert)
         ->code->toBe('test');
 });

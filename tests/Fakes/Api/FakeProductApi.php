@@ -9,9 +9,9 @@ use Illuminate\Support\LazyCollection;
 
 class FakeProductApi
 {
-    public array $all = [];
-    public array $upsert = [];
-    public string $delete = '';
+    public static array $all = [];
+    public static array $upsert = [];
+    public static string $delete = '';
 
     public function create(string $code, array $data = []): int
     {
@@ -35,8 +35,8 @@ class FakeProductApi
             'values' => [
                 'product_name' => [
                     [
-                        'locale' => 'nl_NL',
-                        'scope'  => 'magento',
+                        'locale' => null,
+                        'scope'  => null,
                         'data'   => 'testing product',
                     ],
                 ],
@@ -75,24 +75,65 @@ class FakeProductApi
 
     public function all(int $pageSize = 10, array $queryParameters = [])
     {
-        $this->all['query'] = $queryParameters;
+        self::$all['query'] = $queryParameters;
 
         return LazyCollection::times($pageSize, function () {
-            return ['code' => '::test::'];
+            return [
+                'identifier' => '::test::',
+                'enabled'    => true,
+                'family'     => 'stadsfietsen',
+                'categories' => [],
+                'groups'     => [],
+                'parent'     => null,
+
+                'values' => [
+                    'product_name' => [
+                        [
+                            'locale' => null,
+                            'scope'  => null,
+                            'data'   => 'testing product',
+                        ],
+                    ],
+                ],
+
+                'created' => '2021-11-08T13:10:42+01:00',
+                'updated' => '2021-11-08T13:10:53+01:00',
+
+                'associations'            => [
+                    'UPSELL' => [
+                        'products'       => [],
+                        'product_models' => [],
+                        'groups'         => [],
+                    ],
+
+                    'X_SELL' => [
+                        'products'       => [],
+                        'product_models' => [],
+                        'groups'         => [],
+                    ],
+
+                    'SUBSTITUTION' => [
+                        'products'       => [],
+                        'product_models' => [],
+                        'groups'         => [],
+                    ],
+                ],
+                'quantified_associations' => [],
+            ];
         });
     }
 
     public function upsert(string $code, array $data = []): int
     {
-        $this->upsert['code'] = $code;
-        $this->upsert['data'] = $data;
+        self::$upsert['code'] = $code;
+        self::$upsert['data'] = $data;
 
         return true;
     }
 
     public function delete(string $code): int
     {
-        $this->delete = $code;
+        self::$delete = $code;
 
         return (int) ($code === 'test');
     }
@@ -100,5 +141,12 @@ class FakeProductApi
     public function upsertList($resources): \Traversable
     {
         //
+    }
+
+    public static function setUp(): void
+    {
+        self::$upsert = [];
+        self::$delete = '';
+        self::$all = [];
     }
 }

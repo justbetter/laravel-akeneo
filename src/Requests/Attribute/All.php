@@ -18,6 +18,8 @@ class All extends AllRequest
             $model = config('akeneo.models.attribute');
 
             foreach ($items as $item) {
+                $model = \JustBetter\Akeneo\Akeneo::getAttributeTypeClass($item['type']);
+
                 $models[] = new $model($item);
             }
 

@@ -31,20 +31,28 @@ This is the contents of the published config file:
 return [
     'models' => [
         'product_model' => \JustBetter\Akeneo\Models\ProductModel::class,
-        'product' => \JustBetter\Akeneo\Models\Product::class,
-        'attribute' => \JustBetter\Akeneo\Models\Attribute::class,
-    ],
-    
-    'connections' => [
-        'default' => [
-            'url' => env('AKENEO_URL'),
-            'client_id' => env('AKENEO_CLIENT_ID'),
-            'secret' => env('AKENEO_SECRET'),
-            'username' => env('AKENEO_USERNAME'),
-            'password' => env('AKENEO_PASSWORD'),
+        'product'       => \JustBetter\Akeneo\Models\Product::class,
+        'attribute'     => \JustBetter\Akeneo\Models\Attribute::class,
+        'channel'       => \JustBetter\Akeneo\Models\Channel::class,
+
+        'attribute_types' => [
+            'Simpleselect' => \JustBetter\Akeneo\Models\Attribute\Simpleselect::class,
+            'Multiselect'  => \JustBetter\Akeneo\Models\Attribute\Multiselect::class,
+            'Text'         => \JustBetter\Akeneo\Models\Attribute\Text::class,
+            'Date'         => \JustBetter\Akeneo\Models\Attribute\Date::class,
         ],
     ],
-    
+
+    'connections' => [
+        'default' => [
+            'url'       => env('AKENEO_URL'),
+            'client_id' => env('AKENEO_CLIENT_ID'),
+            'secret'    => env('AKENEO_SECRET'),
+            'username'  => env('AKENEO_USERNAME'),
+            'password'  => env('AKENEO_PASSWORD'),
+        ],
+    ],
+
     'cache_ttl' => 30,
 ];
 ```
@@ -92,16 +100,43 @@ Find a resource by its code
 $product = Product::find('code-123');
 ```
 
-#### Find
-Save an altered model and persist it to akeneo
+#### Attributes
+Calling an attribute code on a model will return a class of that attributes type.
+These are defined in the config and can be extended easily.
+```php
+$product->product_name->setValue(
+    data: 'test product 3',
+    locale: null, # default
+    scope: null # default
+);
+```
 
-There is also a method `setValue()` to change attributes. 
-`NOTE: It's subject to change and in the near future each value 
-(attribute) will become it's own class by the attributes type`
+##### Options
+Options can be constructed and passed to attributes compatible with them
+```php
+$option = \JustBetter\Akeneo\DataObjects\Option::make(
+    data: 'tag 1',
+    locale: null,
+    scope: null  
+)
+
+$product->tags->addOption($option);
+
+$product->tags->removeOption($option);
+
+$product->tags->syncOptions([$option1, $option2]);
+```
+
+#### Save
+Save an altered model and persist it to akeneo
 ```php
 $product = Product::find('code-123');
 
-$product->setValue('product_name', 'test product 3');
+$product->product_name->setValue(
+    data: 'test product 3',
+    locale: null, # default
+    scope: null # default
+);
 
 $product->save();
 ```

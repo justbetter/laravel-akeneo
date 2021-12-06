@@ -9,9 +9,9 @@ use Illuminate\Support\LazyCollection;
 
 class FakeChannelApi
 {
-    public array $all = [];
-    public array $upsert = [];
-    public string $delete = '';
+    public static array $all = [];
+    public static array $upsert = [];
+    public static string $delete = '';
 
     public function create(string $code, array $data = []): int
     {
@@ -25,21 +25,21 @@ class FakeChannelApi
         }
 
         return [
-            'code' => 'test',
-            'currencies'    => [
+            'code'             => 'test',
+            'currencies'       => [
                 'EUR',
                 'USD',
             ],
-            'locales'     => [
+            'locales'          => [
                 'nl_NL',
                 'de_DE',
                 'en_US',
             ],
-            'category_tree' => 'master',
-            'conversion_units'     => [
+            'category_tree'    => 'master',
+            'conversion_units' => [
                 'weight' => 'KILOGRAM',
             ],
-            'labels'     => [
+            'labels'           => [
                 'nl_NL' => 'Test nl_NL',
                 'de_DE' => 'Test de_DE',
                 'en_US' => 'Test en_US',
@@ -55,7 +55,7 @@ class FakeChannelApi
 
     public function all(int $pageSize = 10, array $queryParameters = [])
     {
-        $this->all['query'] = $queryParameters;
+        self::$all['query'] = $queryParameters;
 
         return LazyCollection::times($pageSize, function () {
             return ['code' => '::test::'];
@@ -64,13 +64,19 @@ class FakeChannelApi
 
     public function delete(string $code): int
     {
-        $this->delete = $code;
+        self::$delete = $code;
 
         return (int) ($code === 'test');
     }
 
     public function upsertList($resources): \Traversable
     {
-        //
+    }
+
+    public static function setUp(): void
+    {
+        self::$all = [];
+        self::$upsert = [];
+        self::$delete = '';
     }
 }
