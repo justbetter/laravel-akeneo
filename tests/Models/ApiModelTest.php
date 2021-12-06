@@ -145,7 +145,7 @@ it('can handle simpleselect', function () {
 
     expect($product->product_name->getSelected())
         ->toMatchArray([
-            Option::make('testing product')
+            Option::make('testing product'),
         ]);
 
     $product->product_name->addOption(
@@ -154,7 +154,7 @@ it('can handle simpleselect', function () {
 
     expect($product->product_name->getSelected())
         ->toMatchArray([
-            Option::make('testing product 2')
+            Option::make('testing product 2'),
         ]);
 });
 
@@ -170,7 +170,7 @@ it('can handle multiselects', function () {
 
     expect($product->product_name->getSelected())
         ->toMatchArray([
-            Option::make('testing product')
+            Option::make('testing product'),
         ]);
 
     $product->product_name->addOption(
@@ -180,7 +180,7 @@ it('can handle multiselects', function () {
     expect($product->product_name->getSelected())
         ->toMatchArray([
             Option::make('testing product'),
-            Option::make('testing product 2')
+            Option::make('testing product 2'),
         ]);
 
     $product->product_name->removeOption(
@@ -189,15 +189,15 @@ it('can handle multiselects', function () {
 
     expect($product->product_name->getSelected())
         ->toMatchArray([
-            1 => Option::make('testing product 2')
+            1 => Option::make('testing product 2'),
         ]);
 
     $product->product_name->syncOptions([
-        Option::make('testing product 4')
+        Option::make('testing product 4'),
     ]);
 
     expect($product->product_name->getSelected())
         ->toMatchArray([
-            Option::make('testing product 4')
+            Option::make('testing product 4'),
         ]);
 });

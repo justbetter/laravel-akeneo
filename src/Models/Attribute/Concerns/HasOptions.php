@@ -2,8 +2,8 @@
 
 namespace JustBetter\Akeneo\Models\Attribute\Concerns;
 
-use JustBetter\Akeneo\Models\Attribute\Simpleselect;
 use JustBetter\Akeneo\DataObjects\Option;
+use JustBetter\Akeneo\Models\Attribute\Simpleselect;
 
 trait HasOptions
 {
@@ -31,7 +31,7 @@ trait HasOptions
     }
 
     /**
-     * @param Option[] $options
+     * @param  Option[]  $options
      */
     public function syncOptions(array $options): static
     {
