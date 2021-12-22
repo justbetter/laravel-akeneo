@@ -6,7 +6,6 @@ use Akeneo\Pim\ApiClient\Search\SearchBuilder;
 use Illuminate\Support\Collection;
 use JustBetter\Akeneo\Akeneo;
 use JustBetter\Akeneo\Models\ApiModel;
-use JustBetter\Akeneo\Models\AttributeOption;
 use JustBetter\Akeneo\Requests\AllRequest;
 
 class QueryBuilder

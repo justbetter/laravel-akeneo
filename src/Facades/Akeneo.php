@@ -2,17 +2,17 @@
 
 namespace JustBetter\Akeneo\Facades;
 
+use Akeneo\Pim\ApiClient\Api\AttributeApiInterface;
+use Akeneo\Pim\ApiClient\Api\AttributeOptionApi;
+use Akeneo\Pim\ApiClient\Api\ChannelApiInterface;
+use Akeneo\Pim\ApiClient\Api\ProductApiInterface;
+use Akeneo\Pim\ApiClient\Api\ProductModelApiInterface;
 use Illuminate\Support\Facades\Facade;
 use JustBetter\Akeneo\Tests\Fakes\Api\FakeAttributeApi;
 use JustBetter\Akeneo\Tests\Fakes\Api\FakeChannelApi;
 use JustBetter\Akeneo\Tests\Fakes\Api\FakeProductApi;
 use JustBetter\Akeneo\Tests\Fakes\Api\FakeProductModelApi;
 use JustBetter\Akeneo\Tests\Fakes\FakeAkeneoFacade;
-use Akeneo\Pim\ApiClient\Api\AttributeApiInterface;
-use Akeneo\Pim\ApiClient\Api\AttributeOptionApi;
-use Akeneo\Pim\ApiClient\Api\ChannelApiInterface;
-use Akeneo\Pim\ApiClient\Api\ProductApiInterface;
-use Akeneo\Pim\ApiClient\Api\ProductModelApiInterface;
 
 /**
  * @method static ProductModelApiInterface getProductModelApi()
