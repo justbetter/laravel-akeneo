@@ -6,10 +6,8 @@ use ArrayAccess;
 use BadMethodCallException;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
-use Illuminate\Support\LazyCollection;
 use JustBetter\Akeneo\Akeneo;
 use JustBetter\Akeneo\Builders\QueryBuilder;
-use JustBetter\Akeneo\Exceptions\ModelNotFoundException;
 use JustBetter\Akeneo\Models\Concerns\HasAttributes;
 
 /**

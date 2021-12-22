@@ -36,7 +36,7 @@ trait HasOptions
     }
 
     /**
-     * @param Option[] $options
+     * @param  Option[]  $options
      */
     public function syncOptions(array $options): static
     {
@@ -44,7 +44,6 @@ trait HasOptions
 
         return $this;
     }
-
 
     public function options(): AttributeOptionCollection
     {

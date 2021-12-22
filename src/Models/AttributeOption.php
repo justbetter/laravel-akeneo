@@ -26,7 +26,7 @@ class AttributeOption extends ApiModel
 
         return $class::request($code)->forAttribute($attributeCode)->send([
             'sort_order' => $sortOrder,
-            'labels' => $labels
+            'labels' => $labels,
         ]);
     }
 }
