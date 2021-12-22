@@ -37,38 +37,9 @@ abstract class ApiModel implements ArrayAccess, Arrayable
         return Akeneo::getRequestClass($type, new static);
     }
 
-    public static function all(): Collection
+    public function getPrimaryKey(): string
     {
-        $class = self::guessApiNamespace('All');
-
-        return $class::request()->send();
-    }
-
-    public static function lazy(): LazyCollection
-    {
-        $class = self::guessApiNamespace('Lazy');
-
-        return $class::request()->send();
-    }
-
-    public static function find(string $code): ?static
-    {
-        $class = self::guessApiNamespace('Find');
-
-        return $class::request($code)->send();
-    }
-
-    public static function findOrFail(string $code): static
-    {
-        $model = self::find($code);
-
-        if (! $model) {
-            throw new ModelNotFoundException(
-                __('No results for code ":code"', ['code' => $code])
-            );
-        }
-
-        return $model;
+        return $this[$this->primaryKey];
     }
 
     public function save(): bool
@@ -105,12 +76,12 @@ abstract class ApiModel implements ArrayAccess, Arrayable
 
     public static function __callStatic(string $method, array $arguments): QueryBuilder
     {
-        if (method_exists($builder = (new static)->newQueryBuilder(), $method)) {
-            return $builder->$method(...$arguments);
+        if (! method_exists($builder = static::query(), $method)) {
+            throw new BadMethodCallException(
+                __('Method `:method` does not exist on class `:class`', ['method' => $method, 'class' => get_class($builder)])
+            );
         }
 
-        throw new BadMethodCallException(
-            __('Method `:method` does not exist on class `:class`', ['method' => $method, 'class' => get_class($builder)])
-        );
+        return $builder->$method(...$arguments);
     }
 }

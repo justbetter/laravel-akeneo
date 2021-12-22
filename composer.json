@@ -38,7 +38,10 @@
         "psr-4": {
             "JustBetter\\Akeneo\\": "src",
             "JustBetter\\Akeneo\\Database\\Factories\\": "database/factories"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

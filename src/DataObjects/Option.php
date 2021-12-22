@@ -6,12 +6,11 @@ use Illuminate\Contracts\Support\Arrayable;
 
 class Option implements Arrayable
 {
-    public string $hash;
-
     public function __construct(
         public mixed $data,
         public ?string $locale = null,
-        public ?string $scope = null
+        public ?string $scope = null,
+        protected ?string $hash = null,
     ) {
         $this->hash = md5($this->data.$this->locale.$this->scope);
     }

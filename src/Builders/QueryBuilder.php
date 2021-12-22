@@ -6,14 +6,14 @@ use Akeneo\Pim\ApiClient\Search\SearchBuilder;
 use Illuminate\Support\Collection;
 use JustBetter\Akeneo\Akeneo;
 use JustBetter\Akeneo\Models\ApiModel;
+use JustBetter\Akeneo\Models\AttributeOption;
 use JustBetter\Akeneo\Requests\AllRequest;
 
 class QueryBuilder
 {
-    protected SearchBuilder $searchBuilder;
-
     public function __construct(
-        protected ApiModel $model
+        protected ApiModel $model,
+        protected ?SearchBuilder $searchBuilder = null
     ) {
         $this->searchBuilder = new SearchBuilder;
     }
