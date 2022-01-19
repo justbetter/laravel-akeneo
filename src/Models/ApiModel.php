@@ -44,33 +44,6 @@ abstract class ApiModel implements ArrayAccess, Arrayable
         return $class::request()->send();
     }
 
-    public static function lazy(): LazyCollection
-    {
-        $class = self::guessApiNamespace('Lazy');
-
-        return $class::request()->send();
-    }
-
-    public static function find(string $code): ?static
-    {
-        $class = self::guessApiNamespace('Find');
-
-        return $class::request($code)->send();
-    }
-
-    public static function findOrFail(string $code): static
-    {
-        $model = self::find($code);
-
-        if (! $model) {
-            throw new ModelNotFoundException(
-                __('No results for code ":code"', ['code' => $code])
-            );
-        }
-
-        return $model;
-    }
-
     public function save(): bool
     {
         $class = self::guessApiNamespace('Upsert');
@@ -103,7 +76,7 @@ abstract class ApiModel implements ArrayAccess, Arrayable
         return new QueryBuilder($this);
     }
 
-    public static function __callStatic(string $method, array $arguments): QueryBuilder
+    public static function __callStatic(string $method, array $arguments): mixed
     {
         if (method_exists($builder = (new static)->newQueryBuilder(), $method)) {
             return $builder->$method(...$arguments);

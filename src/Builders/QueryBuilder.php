@@ -4,7 +4,9 @@ namespace JustBetter\Akeneo\Builders;
 
 use Akeneo\Pim\ApiClient\Search\SearchBuilder;
 use Illuminate\Support\Collection;
+use Illuminate\Support\LazyCollection;
 use JustBetter\Akeneo\Akeneo;
+use JustBetter\Akeneo\Exceptions\ModelNotFoundException;
 use JustBetter\Akeneo\Models\ApiModel;
 use JustBetter\Akeneo\Requests\AllRequest;
 
@@ -40,6 +42,33 @@ class QueryBuilder
                 $this->searchBuilder->getFilters()
             )
             ->send();
+    }
+
+    public function lazy(): LazyCollection
+    {
+        $class = $this->model::guessApiNamespace('Lazy');
+
+        return $class::request()->send();
+    }
+
+    public function find(string $code): ?ApiModel
+    {
+        $class = $this->model::guessApiNamespace('Find');
+
+        return $class::request($code)->send();
+    }
+
+    public function findOrFail(string $code): ApiModel
+    {
+        $model = $this->find($code);
+
+        if (! $model) {
+            throw new ModelNotFoundException(
+                __('No results for code ":code"', ['code' => $code])
+            );
+        }
+
+        return $model;
     }
 
     public function first(): ApiModel
