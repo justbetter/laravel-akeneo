@@ -21,6 +21,7 @@ trait HasAttributes
                 return $this->attributes['values'][$name];
             }
 
+            /** @var Attribute $attribute */
             $attribute = Attribute::find($name);
 
             $options = $this->attributes['values'][$name];
