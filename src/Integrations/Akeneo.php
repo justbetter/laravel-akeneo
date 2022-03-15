@@ -3,18 +3,40 @@
 namespace JustBetter\Akeneo\Integrations;
 
 use Akeneo\Pim\ApiClient\AkeneoPimClientInterface;
+use Akeneo\Pim\ApiClient\Api\AssociationTypeApiInterface;
 use Akeneo\Pim\ApiClient\Api\AttributeApiInterface;
+use Akeneo\Pim\ApiClient\Api\AttributeGroupApiInterface;
+use Akeneo\Pim\ApiClient\Api\AttributeOptionApiInterface;
+use Akeneo\Pim\ApiClient\Api\CategoryApiInterface;
 use Akeneo\Pim\ApiClient\Api\ChannelApiInterface;
+use Akeneo\Pim\ApiClient\Api\CurrencyApiInterface;
+use Akeneo\Pim\ApiClient\Api\FamilyApiInterface;
+use Akeneo\Pim\ApiClient\Api\FamilyVariantApiInterface;
+use Akeneo\Pim\ApiClient\Api\LocaleApiInterface;
+use Akeneo\Pim\ApiClient\Api\MeasureFamilyApiInterface;
+use Akeneo\Pim\ApiClient\Api\MeasurementFamilyApiInterface;
+use Akeneo\Pim\ApiClient\Api\MediaFileApiInterface;
 use Akeneo\Pim\ApiClient\Api\ProductApiInterface;
 use Akeneo\Pim\ApiClient\Api\ProductModelApiInterface;
 use BadMethodCallException;
 use JustBetter\Akeneo\Exceptions\AkeneoConfigurationException;
 
 /**
- * @method static ProductModelApiInterface getProductModelApi()
  * @method static ProductApiInterface getProductApi()
+ * @method static CategoryApiInterface getCategoryApi()
  * @method static AttributeApiInterface getAttributeApi()
+ * @method static AttributeOptionApiInterface getAttributeOptionApi()
+ * @method static AttributeGroupApiInterface getAttributeGroupApi()
+ * @method static FamilyApiInterface getFamilyApi()
+ * @method static MediaFileApiInterface getProductMediaFileApi()
+ * @method static LocaleApiInterface getLocaleApi()
  * @method static ChannelApiInterface getChannelApi()
+ * @method static CurrencyApiInterface getCurrencyApi()
+ * @method static MeasureFamilyApiInterface getMeasureFamilyApi()
+ * @method static MeasurementFamilyApiInterface getMeasurementFamilyApi()
+ * @method static AssociationTypeApiInterface getAssociationTypeApi()
+ * @method static FamilyVariantApiInterface getFamilyVariantApi()
+ * @method static ProductModelApiInterface getProductModelApi()
  */
 class Akeneo
 {
