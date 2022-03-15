@@ -20,7 +20,20 @@ You can install the package via composer:
 composer require justbetter/laravel-akeneo
 ```
 
-You can publish the config file with:
+## Configuration
+
+Add the following values to your `.env` file:
+
+```
+AKENEO_URL=
+AKENEO_CLIENT_ID=
+AKENEO_SECRET=
+AKENEO_USERNAME=
+AKENEO_PASSWORD=
+```
+
+You can optionally publish the config file with:
+
 ```bash
 php artisan vendor:publish --provider="JustBetter\Akeneo\AkeneoServiceProvider" --tag="akeneo-config"
 ```
