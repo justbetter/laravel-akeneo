@@ -1,3 +1,5 @@
+> :warning: **Abandoned**: This package is abandoned, we have developed a [new client](https://github.com/justbetter/laravel-akeneo-client).
+
 # Akeneo wrapper for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/justbetter/laravel-akeneo.svg?style=flat-square)](https://packagist.org/packages/justbetter/laravel-akeneo)
